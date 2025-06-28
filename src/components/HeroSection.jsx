@@ -32,7 +32,7 @@ export const HeroSection = () => {
         <div className="container max-w-4xl mx-auto text-left md:ml-10 space-y-6">
           <h1 className="text-4xl md:text-6xl font-bold tracking-tight">
             <span className="opacity-0 animate-fade-in">¡Hola! soy </span>
-            <span className="text-primary opacity-0 animate-fade-in-delay-1">
+            <span className="text-[#6D28D9] opacity-0 animate-fade-in-delay-1">
               {" "}
               Gabriel
             </span>
