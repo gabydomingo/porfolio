@@ -53,6 +53,19 @@ const projects = [
     githubUrl:
       "https://github.com/gabydomingo/ChallengeAmigoSecreto?tab=readme-ov-file",
   },
+  {
+    id: 6,
+    title: "Analisis de datos AUSA",
+    description:
+      "Analisis exploratorio de datasets y limpieza de los mismos con pandas, aplicacion de algoritmo de machine learning y semiapp funcional para predecir severidad de siniestros. Ademas se hizo analisi en looker studio.",
+      
+    image: "./proyectos/ausa.png",
+    tags: ["python", "pandas", "LookerStudio", "machine learning"],
+    demoUrl:
+      "https://lookerstudio.google.com/reporting/a67177eb-c4c4-4320-b3bd-4169fba868a2",
+    githubUrl:
+      "https://colab.research.google.com/drive/1Akj3H08Wwt4TvxYoQcmotAAHq2Ry4_iY?usp=sharing",
+  },
 ];
 
 export const ProjectsSection = () => {
