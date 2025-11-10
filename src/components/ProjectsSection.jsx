@@ -3,46 +3,62 @@ import { ArrowRight, ExternalLink, Github } from "lucide-react";
 const projects = [
   {
     id: 1,
-    title: "Ecommerce de hardware",
+    title: "Analisis de datos AUSA",
     description:
-      "Tienda de ecommerce con mapa para venta local, modelo 3D interactivo didáctico, chat con IA (en producción, se agregará carrito de compras).",
-    image: "./proyectos/pczone-web-cap.png",
-    tags: ["Next", "TailwindCSS", "Supabase", "Prisma", "TypeScript"],
-    demoUrl: "#",
-    githubUrl: "https://github.com/pcZone-org/pczone-web",
+      "Analisis exploratorio de datasets y limpieza de los mismos con pandas, aplicacion de algoritmo de machine learning y semiapp funcional para predecir severidad de siniestros. Ademas se hizo analisi en looker studio.",
+      
+    image: "./proyectos/ausa.png",
+    tags: ["python", "pandas", "LookerStudio", "machine learning"],
+    demoUrl:
+      "https://lookerstudio.google.com/reporting/a67177eb-c4c4-4320-b3bd-4169fba868a2",
+    githubUrl:
+      "https://colab.research.google.com/drive/1Akj3H08Wwt4TvxYoQcmotAAHq2Ry4_iY?usp=sharing",
   },
   {
     id: 2,
-    title: "Constelaciones de recuerdo",
+    title: "Recalde Propiedades",
     description:
-      "App móvil en Android Studio para visualizar constelaciones e historias usando API de la NASA y chat personalizado con Gemini.",
-    image: "/proyectos/kotlin.png",
-    tags: ["Kotlin", "Android Studio"],
-    demoUrl: "#",
-    githubUrl: "https://github.com/gabydomingo/constelaciones_de_recuerdo",
+      "Website para una inmobiliaria de la costa trabaje en fullstack, desde diseño en figma, hasta back y frontend, consume api para mostrar videos en un mockup de celular al estilo tiktok. se trabajo en la version responsive tambien.",
+      
+    image: "./proyectos/recalde.png",
+    tags: ["Next.js", "typescript", "api", "supabase", "vercel", "tailwind"],
+    demoUrl:
+      "https://recaldeinmobiliaria.com/",
+    // githubUrl:
+    //   "https://colab.research.google.com/drive/1Akj3H08Wwt4TvxYoQcmotAAHq2Ry4_iY?usp=sharing",
   },
   {
-    id: 3,
+    id: 2,
     title: "Porfolio",
     description:
       "Mi porfolio personal desarrollado con React y TailwindCSS para mostrar mis proyectos y habilidades.",
     image: "/proyectos/porfolio-cap.png",
     tags: ["React", "TailwindCSS", "Lucide"],
-    demoUrl: "#",
+    // demoUrl: "#",
     githubUrl: "#",
   },
   {
     id: 4,
-    title: "Kumo Ramen",
+    title: "Ecommerce de hardware",
     description:
-      "Proyecto académico: login, manejo de base de datos con PHP, carga de productos, pedidos y jerarquías de usuarios.",
-    image: "./proyectos/kumo-cap.png",
-    tags: ["HTML", "CSS", "JavaScript", "PHP", "Bootstrap", "xampp", "Ajax", "Jquery"],
-    demoUrl: "#",
-    githubUrl: "https://github.com/gabydomingo/kumoRamen/tree/main/website",
+      "Tienda de ecommerce con mapa para venta local, modelo 3D interactivo didáctico, chat con IA (en producción, se agregará carrito de compras).",
+    image: "./proyectos/pczone-web-cap.png",
+    tags: ["Next", "TailwindCSS", "Supabase", "Prisma", "TypeScript"],
+    // demoUrl: "#",
+    githubUrl: "https://github.com/pcZone-org/pczone-web",
   },
   {
     id: 5,
+    title: "Constelaciones de recuerdo",
+    description:
+      "App móvil en Android Studio para visualizar constelaciones e historias usando API de la NASA y chat personalizado con Gemini.",
+    image: "/proyectos/kotlin.png",
+    tags: ["Kotlin", "Android Studio"],
+    // demoUrl: "#",
+    githubUrl: "https://github.com/gabydomingo/constelaciones_de_recuerdo",
+  },
+  {
+    id: 6,
     title: "Challenge amigo secreto",
     description:
       "App simple hecha con JavaScript para sortear amigos secretos en un grupo de personas.",
@@ -54,17 +70,14 @@ const projects = [
       "https://github.com/gabydomingo/ChallengeAmigoSecreto?tab=readme-ov-file",
   },
   {
-    id: 6,
-    title: "Analisis de datos AUSA",
+    id: 7,
+    title: "Kumo Ramen",
     description:
-      "Analisis exploratorio de datasets y limpieza de los mismos con pandas, aplicacion de algoritmo de machine learning y semiapp funcional para predecir severidad de siniestros. Ademas se hizo analisi en looker studio.",
-      
-    image: "./proyectos/ausa.png",
-    tags: ["python", "pandas", "LookerStudio", "machine learning"],
-    demoUrl:
-      "https://lookerstudio.google.com/reporting/a67177eb-c4c4-4320-b3bd-4169fba868a2",
-    githubUrl:
-      "https://colab.research.google.com/drive/1Akj3H08Wwt4TvxYoQcmotAAHq2Ry4_iY?usp=sharing",
+      "Proyecto académico: login, manejo de base de datos con PHP, carga de productos, pedidos y jerarquías de usuarios.",
+    image: "./proyectos/kumo-cap.png",
+    tags: ["HTML", "CSS", "JavaScript", "PHP", "Bootstrap", "xampp", "Ajax", "Jquery"],
+    // demoUrl: "#",
+    githubUrl: "https://github.com/gabydomingo/kumoRamen/tree/main/website",
   },
 ];
 
