@@ -1,4 +1,4 @@
-import { Briefcase, Code, User } from "lucide-react";
+import { Briefcase, Code, User, BarChart2} from "lucide-react";
 
 export const AboutSection = () => {
   return (
@@ -11,7 +11,7 @@ export const AboutSection = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
           <div className="space-y-6">
             <h3 className="text-2xl font-semibold">
-              Apasionado por la tecnología, el desarrollo web y la creación de
+              Apasionado por la tecnología, el desarrollo web, el analisis de datos, machine learning y la creación de
               soluciones reales.
             </h3>
 
@@ -21,7 +21,8 @@ export const AboutSection = () => {
               día. Actualmente finalizo la Tecnicatura en Desarrollo de Software
               en UADE, donde adquirí experiencia sólida en bases de datos
               (creación, mantenimiento y edición), diseño web y desarrollo de
-              aplicaciones. Gracias a experiencias laborales previas fuera del
+              aplicaciones y analisis de datos (pandas, numpy, Scikit-learn, random forest y mas ).
+              Gracias a experiencias laborales previas fuera del
               ámbito IT, también desarrollé habilidades fundamentales como el
               trabajo en equipo, liderazgo, resolución de problemas, pensamiento
               lógico y comunicación efectiva, todas altamente valoradas en
@@ -32,7 +33,7 @@ export const AboutSection = () => {
               A lo largo de mi formación y proyectos personales trabajé con
               HTML, CSS, JavaScript, PHP, SQL (PostgreSQL y SQL Server), Python
               y Bootstrap. En la actualidad me encuentro enfocado en tecnologías
-              modernas como <strong>Next.js</strong>, <strong>React</strong> y{" "}
+              modernas como <strong>Next.js</strong>, <strong>React</strong>, y{" "}
               <strong>MongoDB</strong>, con el objetivo de construir soluciones
               escalables, atractivas y funcionales.
             </p>
@@ -105,6 +106,27 @@ export const AboutSection = () => {
                 </div>
               </div>
             </div>
+
+            <div className="gradient-border p-6 card-hover">
+              <div className="flex items-start gap-4">
+                <div className="p-3 rounded-full bg-primary/10">
+                  <BarChart2 className="h-6 w-6 text-primary" />
+                </div>
+                <div className="text-left">
+                  <h4 className="font-semibold text-lg">Data Science</h4>
+                  <p className="text-muted-foreground">
+                  Experiencia en el ciclo completo de vida del dato: desde la limpieza
+                  y transformación 'ETL', hasta el análisis exploratorio 'EDA'
+                  y la creación de modelos de Machine Learning para predicción, análisis y visualización con
+                  Python y análisis
+                  geoespacial con GeoPandas
+                  y mapas interactivos en Folium.
+                  Ademas de visualización en dashboard interactivos.
+                  </p>
+                </div>
+              </div>
+            </div>
+
           </div>
         </div>
       </div>

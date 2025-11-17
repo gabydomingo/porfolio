@@ -47,7 +47,7 @@ export const HeroSection = () => {
             tecnología y con muchas ganas de seguir creciendo en el mundo IT.
             Actualmente finalizo la Tecnicatura en Desarrollo de Software en
             UADE, donde adquirí experiencia en bases de datos (creación,
-            mantenimiento y edición), diseño web y desarrollo de aplicaciones.
+            mantenimiento y edición), diseño web, desarrollo de aplicaciones y Data analyst.
           </p>
 
           <div className="pt-4 opacity-0 animate-fade-in-delay-4">
