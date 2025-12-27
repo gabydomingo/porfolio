@@ -20,12 +20,14 @@ const skills = [
 
   // Herramientas                 
   { name: "Git/GitHub", level: 90, category: "Herramientas" },
+  { name: "Looker Studio", level: 90, category: "Herramientas" },
+  { name: "Excel", level: 60, category: "Herramientas" },
   ///aprendiendo re chanta ponerlo
   ///{ name: "Docker", level: 30, category: "Herramientas" },
   { name: "Figma", level: 90, category: "Herramientas" },
   { name: "VS Code", level: 95, category: "Herramientas" },
   { name: "Linux", level: 50, category: "Herramientas" },
-  { name: "Python", level: 50, category: "Herramientas" },
+  { name: "Python", level: 70, category: "Herramientas" },
   { name: "NextJS", level: 50, category: "Herramientas" },
 ];
 
