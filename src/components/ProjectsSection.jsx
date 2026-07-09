@@ -28,7 +28,33 @@ const projects = [
     //   "https://colab.research.google.com/drive/1Akj3H08Wwt4TvxYoQcmotAAHq2Ry4_iY?usp=sharing",
   },
   {
-    id: 2,
+    id: 3,
+    title: "Minini Propiedades",
+    description:
+      "Desarrollo fullstack de una plataforma inmobiliaria moderna, migrando su sistema anterior en WordPress hacia un entorno con Next.js y Supabase. El proyecto incluye un buscador avanzado con filtros, integración de mapas interactivos, panel de administración de propiedades y optimización integral tanto de SEO como de diseño responsive.",
+      
+    image: "./proyectos/minprop.png",
+    tags: ["Next.js", "typescript", "api", "supabase", "vercel", "tailwind", "Migracion de datos"],
+    demoUrl:
+      "https://propiedadesminini.com/",
+    // githubUrl:
+    //   "https://colab.research.google.com/drive/1Akj3H08Wwt4TvxYoQcmotAAHq2Ry4_iY?usp=sharing",
+  },
+  {
+    id: 4,
+    title: "Giacchino Propiedades",
+    description:
+      "Desarrollo web integral para una agencia inmobiliaria independiente. Me encargué del ciclo completo del proyecto, gestionando tanto la estructura y diseño de la interfaz como la configuración técnica y migración de dominios con proveedores anteriores. El enfoque principal estuvo en construir una presencia digital profesional, optimizada y adaptable a cualquier dispositivo móvil.",
+      
+    image: "./proyectos/giachiprop.png",
+    tags: ["Next.js", "typescript", "api", "supabase", "vercel", "tailwind"],
+    demoUrl:
+      "https://www.giacchinopropiedades.com/",
+    // githubUrl:
+    //   "https://colab.research.google.com/drive/1Akj3H08Wwt4TvxYoQcmotAAHq2Ry4_iY?usp=sharing",
+  },
+  {
+    id: 5,
     title: "Porfolio",
     description:
       "Mi porfolio personal desarrollado con React y TailwindCSS para mostrar mis proyectos y habilidades.",
@@ -38,7 +64,7 @@ const projects = [
     githubUrl: "#",
   },
   {
-    id: 4,
+    id: 6,
     title: "Ecommerce de hardware",
     description:
       "Tienda de ecommerce con mapa para venta local, modelo 3D interactivo didáctico, chat con IA (en producción, se agregará carrito de compras).",
@@ -48,7 +74,7 @@ const projects = [
     githubUrl: "https://github.com/pcZone-org/pczone-web",
   },
   {
-    id: 5,
+    id: 7,
     title: "Constelaciones de recuerdo",
     description:
       "App móvil en Android Studio para visualizar constelaciones e historias usando API de la NASA y chat personalizado con Gemini.",
@@ -58,7 +84,7 @@ const projects = [
     githubUrl: "https://github.com/gabydomingo/constelaciones_de_recuerdo",
   },
   {
-    id: 6,
+    id: 8,
     title: "Challenge amigo secreto",
     description:
       "App simple hecha con JavaScript para sortear amigos secretos en un grupo de personas.",
@@ -70,7 +96,7 @@ const projects = [
       "https://github.com/gabydomingo/ChallengeAmigoSecreto?tab=readme-ov-file",
   },
   {
-    id: 7,
+    id: 9,
     title: "Kumo Ramen",
     description:
       "Proyecto académico: login, manejo de base de datos con PHP, carga de productos, pedidos y jerarquías de usuarios.",
