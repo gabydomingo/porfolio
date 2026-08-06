@@ -3,8 +3,9 @@
 /* El toggle de tema agrega/saca la clase .dark en el contenedor raíz */
 @custom-variant dark (&:where(.dark, .dark *));
 
-/* @theme inline hace que las utilidades apunten a la variable en vez de
-   copiar el valor, que es lo que permite cambiar de tema en caliente */
+/* @theme inline copia el valor literal dentro de la utilidad. Por eso cada
+   token de acá vale var(--algo): lo que se copia es la referencia, y el tema
+   se puede cambiar en caliente redefiniendo esa variable en .dark */
 @theme inline {
   --color-bg: var(--bg);
   --color-surf: var(--surf);
@@ -19,8 +20,8 @@
   --font-sans: "Instrument Sans", system-ui, sans-serif;
   --font-mono: "IBM Plex Mono", monospace;
 
-  --shadow-card: 0 10px 34px rgb(18 18 26 / 0.09);
-  --shadow-soft: 0 4px 16px rgb(18 18 26 / 0.07);
+  --shadow-card: var(--shadow);
+  --shadow-soft: var(--shadow-sm);
 }
 
 :root {
@@ -33,6 +34,8 @@
   --green: #10b981;
   --pill: rgb(255 255 255 / 0.72);
   --tagbg: #ffffff;
+  --shadow: 0 10px 34px rgb(18 18 26 / 0.09);
+  --shadow-sm: 0 4px 16px rgb(18 18 26 / 0.07);
 }
 
 .dark {
@@ -45,13 +48,8 @@
   --green: #10b981;
   --pill: rgb(23 20 31 / 0.72);
   --tagbg: #1e1a29;
-}
-
-/* Las sombras cambian de intensidad según el tema, así que no pueden
-   vivir solo en @theme */
-.dark {
-  --shadow-card: 0 12px 36px rgb(0 0 0 / 0.5);
-  --shadow-soft: 0 4px 18px rgb(0 0 0 / 0.4);
+  --shadow: 0 12px 36px rgb(0 0 0 / 0.5);
+  --shadow-sm: 0 4px 18px rgb(0 0 0 / 0.4);
 }
 
 @layer base {
