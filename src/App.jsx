@@ -1,8 +1,11 @@
+import Certificaciones from './components/Certificaciones';
+import Contacto from './components/Contacto';
 import DesarrolloWeb from './components/DesarrolloWeb';
 import Hero from './components/Hero';
 import Nav from './components/Nav';
 import ProyectosDestacados from './components/ProyectosDestacados';
 import ProyectosFormacion from './components/ProyectosFormacion';
+import SobreMi from './components/SobreMi';
 import StackTecnico from './components/StackTecnico';
 import useReveal from './hooks/useReveal';
 import useTheme from './hooks/useTheme';
@@ -20,7 +23,13 @@ export default function App() {
         <DesarrolloWeb />
         <ProyectosFormacion />
         <StackTecnico />
+        <SobreMi />
+        <Certificaciones />
+        <Contacto />
       </main>
+      <footer className="px-6 py-7 text-center text-[13px] text-sec">
+        © 2026 Gabriel Domingo
+      </footer>
     </div>
   );
 }
