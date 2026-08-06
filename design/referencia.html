@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&amp;family=Instrument+Sans:ital,wght@0,400;0,500;0,600;1,400&amp;family=IBM+Plex+Mono:wght@500;600&amp;display=swap" rel="stylesheet">
+<script src="./image-slot.js"></script>
+<style>
+html{scroll-behavior:smooth}
+body{margin:0;background:#FAFAFB;font-family:'Instrument Sans',system-ui,sans-serif;text-rendering:optimizeLegibility;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+a:hover{color:#7C5CF0}
+.pg{--bg:#FAFAFB;--surf:#FFFFFF;--txt:#12121A;--sec:#5B5B6B;--vio:#7C5CF0;--viosoft:#EDE8FE;--green:#10B981;--shadow:0 10px 34px rgba(18,18,26,.09);--shadow-sm:0 4px 16px rgba(18,18,26,.07);--pill:rgba(255,255,255,.72);--tagbg:#FFFFFF}
+.pg.dark{--bg:#0D0B14;--surf:#17141F;--txt:#EFEDF5;--sec:#9B95AD;--vio:#9B7DFF;--viosoft:rgba(155,125,255,.14);--green:#10B981;--shadow:0 12px 36px rgba(0,0,0,.5);--shadow-sm:0 4px 18px rgba(0,0,0,.4);--pill:rgba(23,20,31,.72);--tagbg:#1E1A29}
+.pg.dark a:hover{color:#9B7DFF}
+[data-rv]{opacity:0;transform:translateY(18px);transition:opacity .65s ease,transform .65s ease}
+[data-rv].rv-in{opacity:1;transform:none}
+.acc{display:grid;grid-template-rows:0fr;transition:grid-template-rows .4s ease}
+.acc.open{grid-template-rows:1fr}
+.pcard .pzoom{transition:transform .55s ease}
+.pcard:hover .pzoom{transform:scale(1.028)}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(16,185,129,.55)}70%{box-shadow:0 0 0 7px rgba(16,185,129,0)}}
+a:focus-visible,button:focus-visible{outline:2px solid #7C5CF0;outline-offset:2px;border-radius:8px}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}[data-rv]{opacity:1;transform:none}}
+</style>
+</helmet>
+<div class="pg {{ themeCls }}" style="background:var(--bg);color:var(--txt);min-height:100vh;overflow-x:clip;transition:background .3s ease,color .3s ease">
+
+<nav style="position:fixed;top:14px;left:50%;transform:translateX(-50%);z-index:50;display:flex;align-items:center;gap:2px;padding:6px 10px;border-radius:999px;background:var(--pill);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);box-shadow:var(--shadow-sm);max-width:calc(100vw - 20px)">
+  <a href="#proyectos" style="font-size:13.5px;font-weight:500;padding:7px 11px;border-radius:999px" style-hover="background:var(--viosoft)">Proyectos</a>
+  <a href="#tecnologias" style="font-size:13.5px;font-weight:500;padding:7px 11px;border-radius:999px" style-hover="background:var(--viosoft)">Tecnologías</a>
+  <a href="#sobre-mi" style="font-size:13.5px;font-weight:500;padding:7px 11px;border-radius:999px" style-hover="background:var(--viosoft)">Sobre mí</a>
+  <a href="#contacto" style="font-size:13.5px;font-weight:500;padding:7px 11px;border-radius:999px" style-hover="background:var(--viosoft)">Contacto</a>
+  <button onClick="{{ toggleTheme }}" aria-label="Cambiar tema" style="display:flex;align-items:center;justify-content:center;width:32px;height:32px;border:none;border-radius:999px;background:transparent;color:var(--txt);cursor:pointer" style-hover="background:var(--viosoft)">
+    <sc-if value="{{ isDark }}" hint-placeholder-val="{{ false }}">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"></path></svg>
+    </sc-if>
+    <sc-if value="{{ isLight }}" hint-placeholder-val="{{ true }}">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"></path></svg>
+    </sc-if>
+  </button>
+</nav>
+
+<header data-screen-label="Hero" style="position:relative;padding:130px 24px 72px;overflow:hidden">
+  <canvas ref="{{ bgRef }}" aria-hidden="true" style="position:absolute;inset:0;width:100%;height:100%;pointer-events:none"></canvas>
+  <div style="position:relative;max-width:760px;margin:0 auto;display:flex;flex-direction:column;gap:22px">
+    <div style="display:flex;align-items:center;gap:18px;flex-wrap:wrap">
+      <image-slot id="avatar" shape="circle" placeholder="Foto" style="width:88px;height:88px;flex:none;box-shadow:var(--shadow-sm)"></image-slot>
+      <sc-if value="{{ showBadgeVal }}" hint-placeholder-val="{{ true }}">
+        <a href="#contacto" style="display:inline-flex;align-items:center;gap:9px;padding:8px 15px;border-radius:999px;background:var(--surf);box-shadow:var(--shadow-sm);font-size:13.5px;font-weight:500">
+          <span style="width:9px;height:9px;border-radius:50%;background:var(--green);animation:pulse 2s infinite"></span>
+          Disponible para trabajar
+        </a>
+      </sc-if>
+    </div>
+    <h1 style="font-family:Sora,sans-serif;font-weight:800;letter-spacing:-0.03em;font-size:clamp(38px,6.5vw,58px);line-height:1.05;margin:0">Hola, soy Gabriel</h1>
+    <p style="font-size:clamp(17px,2.4vw,20px);line-height:1.65;color:var(--sec);margin:0;max-width:640px;text-wrap:pretty">Analista de datos y desarrollador de Buenos Aires. <strong style="color:var(--txt)">Construyo pipelines de datos de punta a punta</strong>: extraigo, proceso, modelo y dejo el resultado funcionando en la nube.</p>
+    <div style="display:flex;flex-wrap:wrap;gap:12px">
+      <a href="#proyectos" style="display:inline-flex;align-items:center;gap:8px;padding:12px 22px;border-radius:12px;background:var(--vio);color:#fff;font-weight:600;font-size:15px;transition:transform .2s ease,box-shadow .2s ease" style-hover="transform:translateY(-2px);box-shadow:0 8px 24px rgba(124,92,240,.4);color:#fff">Ver proyectos</a>
+      <a href="#" style="display:inline-flex;align-items:center;gap:8px;padding:12px 20px;border-radius:12px;background:var(--surf);box-shadow:var(--shadow-sm);font-weight:600;font-size:15px;transition:transform .2s ease" style-hover="transform:translateY(-2px)">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"></path></svg>
+        Descargar CV
+      </a>
+      <a href="https://linkedin.com/in/gabydomingo" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:8px;padding:12px 20px;border-radius:12px;background:var(--surf);box-shadow:var(--shadow-sm);font-weight:600;font-size:15px;transition:transform .2s ease" style-hover="transform:translateY(-2px)">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05a3.74 3.74 0 0 1 3.37-1.85c3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45z"></path></svg>
+        LinkedIn
+      </a>
+      <a href="https://github.com/gabydomingo" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:8px;padding:12px 20px;border-radius:12px;background:var(--surf);box-shadow:var(--shadow-sm);font-weight:600;font-size:15px;transition:transform .2s ease" style-hover="transform:translateY(-2px)">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5A11.5 11.5 0 0 0 .5 12a11.5 11.5 0 0 0 7.86 10.92c.58.1.79-.25.79-.56v-2.17c-3.2.7-3.87-1.36-3.87-1.36-.53-1.33-1.28-1.69-1.28-1.69-1.05-.71.08-.7.08-.7 1.15.08 1.76 1.19 1.76 1.19 1.03 1.77 2.71 1.26 3.37.96.1-.75.4-1.26.73-1.55-2.55-.29-5.23-1.28-5.23-5.68 0-1.26.45-2.28 1.18-3.09-.12-.29-.51-1.46.11-3.05 0 0 .97-.31 3.17 1.18a11 11 0 0 1 5.77 0c2.2-1.49 3.16-1.18 3.16-1.18.63 1.59.24 2.76.12 3.05.74.81 1.18 1.83 1.18 3.09 0 4.41-2.69 5.38-5.25 5.67.41.35.78 1.05.78 2.12v3.14c0 .31.2.67.8.56A11.5 11.5 0 0 0 23.5 12 11.5 11.5 0 0 0 12 .5z"></path></svg>
+        GitHub
+      </a>
+    </div>
+    <div ref="{{ metricsRef }}" style="display:flex;flex-wrap:wrap;gap:14px 44px;margin-top:14px">
+      <div style="display:flex;flex-direction:column;gap:2px"><span style="font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:34px;letter-spacing:-0.02em"><span data-cnt="43">0</span>M</span><span style="font-size:13px;color:var(--sec)">registros procesados</span></div>
+      <div style="display:flex;flex-direction:column;gap:2px"><span style="font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:34px;letter-spacing:-0.02em"><span data-cnt="4">0</span></span><span style="font-size:13px;color:var(--sec)">modelos entrenados</span></div>
+      <div style="display:flex;flex-direction:column;gap:2px"><span style="font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:34px;letter-spacing:-0.02em"><span data-cnt="3">0</span></span><span style="font-size:13px;color:var(--sec)">apps en producción</span></div>
+      <div style="display:flex;flex-direction:column;gap:2px"><span style="font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:34px;letter-spacing:-0.02em"><span data-cnt="2">0</span></span><span style="font-size:13px;color:var(--sec)">dashboards de BI</span></div>
+    </div>
+  </div>
+</header>
+
+<main style="display:flex;flex-direction:column;gap:110px;padding:40px 24px 90px">
+
+<section id="proyectos" data-screen-label="Proyectos destacados" style="max-width:1120px;margin:0 auto;width:100%;display:flex;flex-direction:column;gap:64px;scroll-margin-top:90px">
+  <h2 data-rv style="font-family:Sora,sans-serif;font-weight:800;letter-spacing:-0.025em;font-size:clamp(28px,4vw,40px);margin:0">Proyectos destacados</h2>
+
+  <article data-rv class="pcard" style="display:flex;flex-wrap:wrap;gap:36px;align-items:stretch">
+    <div style="flex:1 1 440px;min-width:280px;border-radius:16px;overflow:hidden;box-shadow:var(--shadow);min-height:320px;position:relative">
+      <div class="pzoom" style="position:absolute;inset:0"><image-slot id="proj-f1" shape="rect" placeholder="Captura del dashboard de telemetría F1"></image-slot></div>
+    </div>
+    <div style="flex:1 1 400px;min-width:280px;display:flex;flex-direction:column;gap:16px;justify-content:center">
+      <h3 style="font-family:Sora,sans-serif;font-weight:700;letter-spacing:-0.02em;font-size:24px;line-height:1.2;margin:0">Plataforma de estrategia y telemetría de Fórmula 1</h3>
+      <p style="margin:0;font-size:14.5px;line-height:1.6;color:var(--sec)"><strong style="color:var(--txt)">El problema.</strong> Decidir en qué vuelta parar a cambiar neumáticos es la decisión de mayor impacto de una carrera, y depende de estimar cuánto se está degradando el compuesto en tiempo real.</p>
+      <p style="margin:0;font-size:14.5px;line-height:1.6;color:var(--sec)"><strong style="color:var(--txt)">Los datos.</strong> Tres temporadas completas de Fórmula 1 (2024, 2025 y lo corrido de 2026): 72 carreras, más de 37 millones de filas de telemetría oficial obtenidas con FastF1 — velocidad, RPM, freno, acelerador, marcha, compuesto y coordenadas de pista, muestreadas varias veces por segundo.</p>
+      <p style="margin:0;font-size:14.5px;line-height:1.6;color:var(--sec)"><strong style="color:var(--txt)">Cómo lo resolví.</strong> Ingesta automatizada con GitHub Actions hacia un data lake en AWS S3, organizado en capas bronze / silver / gold con particionado tipo Hive. Procesamiento distribuido con PySpark, capa analítica en BigQuery y un modelo XGBoost entrenado sobre 58.529 vueltas, corrigiendo el efecto del combustible que se quema y descartando las vueltas con lluvia.</p>
+      <div style="background:var(--surf);border-radius:16px;padding:18px 20px;box-shadow:var(--shadow-sm)">
+        <div style="font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:clamp(17px,2.4vw,21px);color:var(--green);letter-spacing:-0.01em">MAE 0,678 s · 16,7% mejor que el baseline</div>
+        <p style="margin:10px 0 0;font-size:14px;line-height:1.6;color:var(--sec)">Error medio de 0,678 segundos al predecir la caída de ritmo, validando sobre un circuito que el modelo nunca había visto. El hallazgo interesante es que la ventana óptima que calcula el modelo cae unas diez vueltas más tarde que la parada real: en 2024 la mayoría de las paradas las decidió un safety car, no la degradación.</p>
+      </div>
+      <div style="display:flex;flex-wrap:wrap;gap:7px">
+        <sc-for list="{{ p1tags }}" as="t" hint-placeholder-count="6">
+          <span style="display:inline-flex;align-items:center;gap:6px;padding:5px 11px;border-radius:999px;background:var(--tagbg);box-shadow:var(--shadow-sm);font-size:12.5px;font-weight:500"><span style="width:8px;height:8px;border-radius:50%;background:{{ t.c }};flex:none"></span>{{ t.n }}</span>
+        </sc-for>
+      </div>
+      <div style="display:flex;flex-wrap:wrap;gap:10px;margin-top:2px">
+        <a href="#" style="display:inline-flex;align-items:center;gap:7px;padding:9px 16px;border-radius:12px;background:var(--vio);color:#fff;font-weight:600;font-size:13.5px" style-hover="color:#fff;transform:translateY(-1px)">Ver dashboard</a>
+        <a href="#" style="display:inline-flex;align-items:center;gap:7px;padding:9px 16px;border-radius:12px;background:var(--surf);box-shadow:var(--shadow-sm);font-weight:600;font-size:13.5px" style-hover="transform:translateY(-1px)">Ver BI en Looker Studio</a>
+        <a href="#" style="display:inline-flex;align-items:center;gap:7px;padding:9px 16px;border-radius:12px;background:var(--surf);box-shadow:var(--shadow-sm);font-weight:600;font-size:13.5px" style-hover="transform:translateY(-1px)">Código</a>
+      </div>
+    </div>
+  </article>
+
+  <article data-rv class="pcard" style="display:flex;flex-wrap:wrap;gap:36px;align-items:stretch;flex-direction:row-reverse">
+    <div style="flex:1 1 440px;min-width:280px;border-radius:16px;overflow:hidden;box-shadow:var(--shadow);min-height:320px;position:relative">
+      <div class="pzoom" style="position:absolute;inset:0"><image-slot id="proj-ocean" shape="rect" placeholder="Captura del detector de anomalías oceánicas"></image-slot></div>
+    </div>
+    <div style="flex:1 1 400px;min-width:280px;display:flex;flex-direction:column;gap:16px;justify-content:center">
+      <h3 style="font-family:Sora,sans-serif;font-weight:700;letter-spacing:-0.02em;font-size:24px;line-height:1.2;margin:0">Detección de anomalías oceánicas en la costa de Mar del Plata</h3>
+      <p style="margin:0;font-size:14.5px;line-height:1.6;color:var(--sec)"><strong style="color:var(--txt)">El problema.</strong> Las olas de calor marinas afectan directamente a la pesca y al turismo de la costa bonaerense, pero no existe una herramienta accesible que las detecte y las muestre.</p>
+      <p style="margin:0;font-size:14.5px;line-height:1.6;color:var(--sec)"><strong style="color:var(--txt)">Los datos.</strong> 22 años de temperatura superficial del mar de NOAA (2003–2024), más salinidad y altura de ola de Copernicus Marine: 6,29 millones de puntos de grilla sobre la plataforma frente a Mar del Plata.</p>
+      <p style="margin:0;font-size:14.5px;line-height:1.6;color:var(--sec)"><strong style="color:var(--txt)">Cómo lo resolví.</strong> ETL con xarray sobre archivos NetCDF hacia PostgreSQL corriendo en Docker, con ingeniería de variables estacionales para que el modelo entienda que 20°C en febrero es normal y en agosto no. Detección de anomalías con Isolation Forest y pronóstico de tendencia con SARIMA. Después lo expuse como API con FastAPI y una interfaz en Next.js.</p>
+      <div style="background:var(--surf);border-radius:16px;padding:18px 20px;box-shadow:var(--shadow-sm)">
+        <div style="font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:clamp(17px,2.4vw,21px);color:var(--green);letter-spacing:-0.01em">33,7% anómalo contra 5% de base</div>
+        <p style="margin:10px 0 0;font-size:14px;line-height:1.6;color:var(--sec)">Durante la ola de calor marina récord de febrero–marzo de 2017 —documentada en la literatura científica— el modelo marcó como anómalo el 33,7% de los datos. La detección se mantuvo estable variando el umbral de contaminación entre 3% y 7%.</p>
+      </div>
+      <div style="display:flex;flex-wrap:wrap;gap:7px">
+        <sc-for list="{{ p2tags }}" as="t" hint-placeholder-count="6">
+          <span style="display:inline-flex;align-items:center;gap:6px;padding:5px 11px;border-radius:999px;background:var(--tagbg);box-shadow:var(--shadow-sm);font-size:12.5px;font-weight:500"><span style="width:8px;height:8px;border-radius:50%;background:{{ t.c }};flex:none"></span>{{ t.n }}</span>
+        </sc-for>
+      </div>
+      <div style="display:flex;flex-wrap:wrap;gap:10px;margin-top:2px">
+        <a href="#" style="display:inline-flex;align-items:center;gap:7px;padding:9px 16px;border-radius:12px;background:var(--vio);color:#fff;font-weight:600;font-size:13.5px" style-hover="color:#fff;transform:translateY(-1px)">Probar el detector</a>
+        <a href="#" style="display:inline-flex;align-items:center;gap:7px;padding:9px 16px;border-radius:12px;background:var(--surf);box-shadow:var(--shadow-sm);font-weight:600;font-size:13.5px" style-hover="transform:translateY(-1px)">Código</a>
+      </div>
+    </div>
+  </article>
+
+  <article data-rv class="pcard" style="display:flex;flex-wrap:wrap;gap:36px;align-items:stretch">
+    <div style="flex:1 1 440px;min-width:280px;border-radius:16px;overflow:hidden;box-shadow:var(--shadow);min-height:300px;position:relative">
+      <div class="pzoom" style="position:absolute;inset:0"><image-slot id="proj-ausa" shape="rect" placeholder="Captura del tablero de siniestros AUSA"></image-slot></div>
+    </div>
+    <div style="flex:1 1 400px;min-width:280px;display:flex;flex-direction:column;gap:16px;justify-content:center">
+      <h3 style="font-family:Sora,sans-serif;font-weight:700;letter-spacing:-0.02em;font-size:24px;line-height:1.2;margin:0">Análisis de siniestros viales en autopistas de AUSA</h3>
+      <p style="margin:0;font-size:14.5px;line-height:1.6;color:var(--sec)"><strong style="color:var(--txt)">El problema.</strong> Anticipar qué siniestros van a ser graves permite dimensionar mejor la respuesta de emergencia.</p>
+      <p style="margin:0;font-size:14.5px;line-height:1.6;color:var(--sec)"><strong style="color:var(--txt)">Los datos.</strong> Registros históricos de incidentes de tránsito en las autopistas urbanas de la Ciudad de Buenos Aires.</p>
+      <p style="margin:0;font-size:14.5px;line-height:1.6;color:var(--sec)"><strong style="color:var(--txt)">Cómo lo resolví.</strong> Limpieza y transformación con pandas, análisis exploratorio, modelo de clasificación con Random Forest y un tablero de seguimiento en Looker Studio.</p>
+      <div style="background:var(--surf);border-radius:16px;padding:18px 20px;box-shadow:var(--shadow-sm)">
+        <div style="font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:clamp(17px,2.4vw,21px);color:var(--green);letter-spacing:-0.01em">78% de recall en siniestros graves</div>
+        <p style="margin:10px 0 0;font-size:14px;line-height:1.6;color:var(--sec)">Se priorizó no dejar pasar casos críticos por encima de la precisión general.</p>
+      </div>
+      <div style="display:flex;flex-wrap:wrap;gap:7px">
+        <sc-for list="{{ p3tags }}" as="t" hint-placeholder-count="5">
+          <span style="display:inline-flex;align-items:center;gap:6px;padding:5px 11px;border-radius:999px;background:var(--tagbg);box-shadow:var(--shadow-sm);font-size:12.5px;font-weight:500"><span style="width:8px;height:8px;border-radius:50%;background:{{ t.c }};flex:none"></span>{{ t.n }}</span>
+        </sc-for>
+      </div>
+      <div style="display:flex;flex-wrap:wrap;gap:10px;margin-top:2px">
+        <a href="#" style="display:inline-flex;align-items:center;gap:7px;padding:9px 16px;border-radius:12px;background:var(--surf);box-shadow:var(--shadow-sm);font-weight:600;font-size:13.5px" style-hover="transform:translateY(-1px)">Ver notebook</a>
+        <a href="#" style="display:inline-flex;align-items:center;gap:7px;padding:9px 16px;border-radius:12px;background:var(--surf);box-shadow:var(--shadow-sm);font-weight:600;font-size:13.5px" style-hover="transform:translateY(-1px)">Ver dashboard</a>
+      </div>
+    </div>
+  </article>
+</section>
+
+<section data-screen-label="Desarrollo web" style="max-width:920px;margin:0 auto;width:100%;display:flex;flex-direction:column;gap:28px">
+  <div data-rv style="display:flex;flex-direction:column;gap:12px">
+    <h2 style="font-family:Sora,sans-serif;font-weight:700;letter-spacing:-0.02em;font-size:clamp(24px,3.2vw,30px);margin:0">Desarrollo web</h2>
+    <p style="margin:0;font-size:16px;line-height:1.65;color:var(--sec);max-width:640px;text-wrap:pretty">Antes de dedicarme a los datos trabajé como desarrollador full stack. Estos proyectos son la razón por la que puedo llevar un modelo desde el notebook hasta un sitio funcionando.</p>
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:22px">
+    <sc-for list="{{ webProjects }}" as="w" hint-placeholder-count="4">
+      <article data-rv class="pcard" style="background:var(--surf);border-radius:16px;overflow:hidden;box-shadow:var(--shadow-sm);display:flex;flex-direction:column;transition:transform .25s ease,box-shadow .25s ease" style-hover="transform:translateY(-4px);box-shadow:var(--shadow)">
+        <div style="height:160px;position:relative;overflow:hidden"><div class="pzoom" style="position:absolute;inset:0"><image-slot id="{{ w.img }}" shape="rect" placeholder="{{ w.ph }}"></image-slot></div></div>
+        <div style="padding:18px 20px 20px;display:flex;flex-direction:column;gap:9px">
+          <h3 style="font-family:Sora,sans-serif;font-weight:700;font-size:17px;letter-spacing:-0.01em;margin:0">{{ w.name }}</h3>
+          <p style="margin:0;font-size:14px;line-height:1.55;color:var(--sec)">{{ w.desc }}</p>
+          <div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:4px">
+            <sc-for list="{{ w.tags }}" as="t" hint-placeholder-count="3">
+              <span style="display:inline-flex;align-items:center;gap:6px;padding:4px 10px;border-radius:999px;background:var(--viosoft);font-size:12px;font-weight:500"><span style="width:7px;height:7px;border-radius:50%;background:{{ t.c }};flex:none"></span>{{ t.n }}</span>
+            </sc-for>
+          </div>
+        </div>
+      </article>
+    </sc-for>
+  </div>
+</section>
+
+<section data-screen-label="Proyectos de formación" style="max-width:920px;margin:0 auto;width:100%">
+  <div data-rv style="background:var(--surf);border-radius:16px;box-shadow:var(--shadow-sm)">
+    <button onClick="{{ toggleForm }}" aria-expanded="{{ formOpen }}" style="display:flex;align-items:center;justify-content:space-between;gap:14px;width:100%;padding:20px 24px;border:none;background:transparent;color:var(--txt);cursor:pointer;text-align:left;font-family:inherit;border-radius:16px">
+      <span><span style="font-family:Sora,sans-serif;font-weight:700;font-size:17px;letter-spacing:-0.01em">Proyectos de formación</span><span style="font-size:14.5px;color:var(--sec)"> — Ejercicios y trabajos de cursada.</span></span>
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex:none;transition:transform .3s ease;transform:{{ chevRot }}"><path d="M6 9l6 6 6-6"></path></svg>
+    </button>
+    <div class="acc {{ formCls }}"><div style="overflow:hidden">
+      <div style="padding:4px 24px 22px;display:flex;flex-direction:column;gap:14px">
+        <sc-for list="{{ eduProjects }}" as="e" hint-placeholder-count="3">
+          <div style="display:flex;flex-wrap:wrap;align-items:baseline;gap:8px 12px">
+            <span style="font-weight:600;font-size:14.5px">{{ e.name }}</span>
+            <span style="font-size:14px;color:var(--sec);flex:1 1 260px">{{ e.desc }}</span>
+            <span style="display:flex;gap:6px;flex-wrap:wrap">
+              <sc-for list="{{ e.tags }}" as="t" hint-placeholder-count="2">
+                <span style="display:inline-flex;align-items:center;gap:5px;padding:3px 9px;border-radius:999px;background:var(--viosoft);font-size:11.5px;font-weight:500"><span style="width:6px;height:6px;border-radius:50%;background:{{ t.c }};flex:none"></span>{{ t.n }}</span>
+              </sc-for>
+            </span>
+          </div>
+        </sc-for>
+      </div>
+    </div></div>
+  </div>
+</section>
+
+<section id="tecnologias" data-screen-label="Stack técnico" style="max-width:920px;margin:0 auto;width:100%;display:flex;flex-direction:column;gap:26px;scroll-margin-top:90px">
+  <h2 data-rv style="font-family:Sora,sans-serif;font-weight:700;letter-spacing:-0.02em;font-size:clamp(24px,3.2vw,30px);margin:0">Stack técnico</h2>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:22px">
+    <sc-for list="{{ stackGroups }}" as="g" hint-placeholder-count="4">
+      <div data-rv style="background:var(--surf);border-radius:16px;padding:22px 24px;box-shadow:var(--shadow-sm);display:flex;flex-direction:column;gap:14px">
+        <div style="display:flex;align-items:center;gap:11px">
+          <span style="display:flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:12px;background:var(--viosoft);color:var(--vio)" dangerouslySetInnerHTML="{{ g.icon }}"></span>
+          <h3 style="font-family:Sora,sans-serif;font-weight:700;font-size:16px;letter-spacing:-0.01em;margin:0">{{ g.title }}</h3>
+        </div>
+        <div style="display:flex;flex-wrap:wrap;gap:7px">
+          <sc-for list="{{ g.tags }}" as="t" hint-placeholder-count="8">
+            <span style="display:inline-flex;align-items:center;gap:6px;padding:5px 11px;border-radius:999px;background:var(--tagbg);box-shadow:var(--shadow-sm);font-size:12.5px;font-weight:500"><span style="width:8px;height:8px;border-radius:50%;background:{{ t.c }};flex:none"></span>{{ t.n }}</span>
+          </sc-for>
+        </div>
+      </div>
+    </sc-for>
+  </div>
+</section>
+
+<section id="sobre-mi" data-screen-label="Sobre mí" style="max-width:920px;margin:0 auto;width:100%;scroll-margin-top:90px">
+  <div data-rv style="display:flex;flex-wrap:wrap;gap:40px;align-items:center">
+    <image-slot id="about-photo" shape="rounded" radius="16" placeholder="Foto de Gabriel" style="width:260px;height:300px;flex:none;box-shadow:var(--shadow)"></image-slot>
+    <div style="flex:1 1 380px;display:flex;flex-direction:column;gap:16px">
+      <h2 style="font-family:Sora,sans-serif;font-weight:700;letter-spacing:-0.02em;font-size:clamp(24px,3.2vw,30px);margin:0">Sobre mí</h2>
+      <p style="margin:0;font-size:16px;line-height:1.7;color:var(--sec);text-wrap:pretty">Estoy terminando la Tecnicatura en Desarrollo de Software en UADE, con el foco puesto en ciencia de datos. Vengo del desarrollo full stack freelance, y <strong style="color:var(--txt)">esa mezcla es la que me interesa aprovechar</strong>: sé limpiar un dataset de millones de filas y también sé qué hacer después para que el resultado le llegue a alguien.</p>
+      <p style="margin:0;font-size:16px;line-height:1.7;color:var(--sec);text-wrap:pretty">Busco mi primer puesto en un equipo de datos. Me interesan <strong style="color:var(--txt)">los problemas donde el dato tiene consecuencias concretas</strong> —una decisión de operación, un recurso que se asigna mejor— y los equipos donde se pueda discutir el porqué de cada decisión técnica.</p>
+    </div>
+  </div>
+</section>
+
+<section data-screen-label="Certificaciones" style="max-width:720px;margin:0 auto;width:100%;display:flex;flex-direction:column;gap:22px">
+  <h2 data-rv style="font-family:Sora,sans-serif;font-weight:700;letter-spacing:-0.02em;font-size:clamp(24px,3.2vw,30px);margin:0">Certificaciones</h2>
+  <div style="display:flex;flex-direction:column;gap:12px">
+    <sc-for list="{{ certs }}" as="c" hint-placeholder-count="4">
+      <div data-rv style="display:flex;align-items:center;gap:15px;background:var(--surf);border-radius:16px;padding:15px 18px;box-shadow:var(--shadow-sm)">
+        <span style="display:flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:12px;background:{{ c.bg }};color:{{ c.fg }};font-family:Sora,sans-serif;font-weight:800;font-size:12px;flex:none">{{ c.abbr }}</span>
+        <div style="display:flex;flex-direction:column;gap:1px">
+          <span style="font-weight:600;font-size:15px">{{ c.name }}</span>
+          <span style="font-size:13px;color:var(--sec)">{{ c.org }}</span>
+        </div>
+      </div>
+    </sc-for>
+  </div>
+</section>
+
+<section id="contacto" data-screen-label="Contacto" style="max-width:640px;margin:0 auto;width:100%;text-align:center;display:flex;flex-direction:column;gap:20px;align-items:center;scroll-margin-top:90px">
+  <h2 data-rv style="font-family:Sora,sans-serif;font-weight:800;letter-spacing:-0.025em;font-size:clamp(30px,4.5vw,42px);margin:0">Hablemos</h2>
+  <p data-rv style="margin:0;font-size:16.5px;line-height:1.65;color:var(--sec);max-width:480px;text-wrap:pretty">Estoy buscando mi primer puesto en datos. Si tenés una búsqueda abierta o simplemente querés comentar algo de los proyectos, escribime.</p>
+  <div data-rv style="display:flex;flex-wrap:wrap;gap:12px;justify-content:center">
+    <a href="mailto:domingogaby8@gmail.com" style="display:inline-flex;align-items:center;gap:9px;padding:14px 26px;border-radius:12px;background:var(--vio);color:#fff;font-weight:600;font-size:15.5px;transition:transform .2s ease,box-shadow .2s ease" style-hover="transform:translateY(-2px);box-shadow:0 8px 24px rgba(124,92,240,.4);color:#fff">
+      <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"></rect><path d="M22 7l-10 6L2 7"></path></svg>
+      domingogaby8@gmail.com
+    </a>
+    <a href="https://linkedin.com/in/gabydomingo" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:8px;padding:14px 22px;border-radius:12px;background:var(--surf);box-shadow:var(--shadow-sm);font-weight:600;font-size:15px;transition:transform .2s ease" style-hover="transform:translateY(-2px)">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05a3.74 3.74 0 0 1 3.37-1.85c3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45z"></path></svg>
+      LinkedIn
+    </a>
+    <a href="https://github.com/gabydomingo" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:8px;padding:14px 22px;border-radius:12px;background:var(--surf);box-shadow:var(--shadow-sm);font-weight:600;font-size:15px;transition:transform .2s ease" style-hover="transform:translateY(-2px)">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5A11.5 11.5 0 0 0 .5 12a11.5 11.5 0 0 0 7.86 10.92c.58.1.79-.25.79-.56v-2.17c-3.2.7-3.87-1.36-3.87-1.36-.53-1.33-1.28-1.69-1.28-1.69-1.05-.71.08-.7.08-.7 1.15.08 1.76 1.19 1.76 1.19 1.03 1.77 2.71 1.26 3.37.96.1-.75.4-1.26.73-1.55-2.55-.29-5.23-1.28-5.23-5.68 0-1.26.45-2.28 1.18-3.09-.12-.29-.51-1.46.11-3.05 0 0 .97-.31 3.17 1.18a11 11 0 0 1 5.77 0c2.2-1.49 3.16-1.18 3.16-1.18.63 1.59.24 2.76.12 3.05.74.81 1.18 1.83 1.18 3.09 0 4.41-2.69 5.38-5.25 5.67.41.35.78 1.05.78 2.12v3.14c0 .31.2.67.8.56A11.5 11.5 0 0 0 23.5 12 11.5 11.5 0 0 0 12 .5z"></path></svg>
+      GitHub
+    </a>
+  </div>
+  <span data-rv style="font-size:13.5px;color:var(--sec)">Buenos Aires, Argentina</span>
+</section>
+
+</main>
+<footer style="padding:28px 24px;text-align:center;font-size:13px;color:var(--sec)">© 2026 Gabriel Domingo</footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;defaultTheme&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;light&quot;,&quot;dark&quot;],&quot;default&quot;:&quot;light&quot;,&quot;tsType&quot;:&quot;'light' | 'dark'&quot;,&quot;section&quot;:&quot;Apariencia&quot;},&quot;showBadge&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Hero&quot;}}">
+class Component extends DCLogic {
+  state = { theme: null, formOpen: false };
+  constructor(props) {
+    super(props);
+    this.bgRef = React.createRef();
+    this.metricsRef = React.createRef();
+    this._raf = null;
+  }
+  get isDark() {
+    return (this.state.theme ?? this.props.defaultTheme ?? 'light') === 'dark';
+  }
+  componentDidMount() {
+    try { const s = localStorage.getItem('gd-theme'); if (s) this.setState({ theme: s }); } catch (e) {}
+    this.reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    this.setupReveals();
+    this.setupCounters();
+    this.setupCanvas();
+  }
+  componentWillUnmount() {
+    if (this._raf) cancelAnimationFrame(this._raf);
+    if (this._ro) this._ro.disconnect();
+  }
+  setupReveals() {
+    const els = Array.from(document.querySelectorAll('[data-rv]'));
+    if (this.reduced) { els.forEach(el => el.classList.add('rv-in')); return; }
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(en => { if (en.isIntersecting) { en.target.classList.add('rv-in'); io.unobserve(en.target); } });
+    }, { threshold: 0.12 });
+    els.forEach((el, i) => {
+      const sibs = el.parentElement ? Array.from(el.parentElement.children).filter(c => c.hasAttribute('data-rv')) : [el];
+      el.style.transitionDelay = (sibs.indexOf(el) > 0 ? (sibs.indexOf(el) % 4) * 90 : 0) + 'ms';
+      io.observe(el);
+    });
+  }
+  setupCounters() {
+    const spans = Array.from(document.querySelectorAll('[data-cnt]'));
+    if (!spans.length) return;
+    let started = false;
+    const run = () => {
+      if (started) return; started = true;
+      spans.forEach(sp => {
+        const target = parseInt(sp.getAttribute('data-cnt'), 10);
+        if (this.reduced) { sp.textContent = target; return; }
+        const t0 = performance.now(), dur = 1300;
+        const step = now => {
+          const p = Math.min(1, (now - t0) / dur), e = 1 - Math.pow(1 - p, 3);
+          sp.textContent = Math.round(target * e);
+          if (p < 1) requestAnimationFrame(step);
+        };
+        requestAnimationFrame(step);
+      });
+    };
+    const host = spans[0].closest('div[style]') || spans[0];
+    const r = host.getBoundingClientRect();
+    if (r.top < window.innerHeight && r.bottom > 0) { setTimeout(run, 250); return; }
+    const io = new IntersectionObserver(en => { if (en.some(e => e.isIntersecting)) { run(); io.disconnect(); } }, { threshold: 0 });
+    io.observe(host);
+    setTimeout(() => { const r2 = host.getBoundingClientRect(); if (r2.top < window.innerHeight && r2.bottom > 0) run(); }, 3000);
+  }
+  setupCanvas() {
+    const cv = this.bgRef.current; if (!cv) return;
+    const ctx = cv.getContext('2d');
+    const size = () => { cv.width = cv.offsetWidth; cv.height = cv.offsetHeight; };
+    size();
+    this._ro = new ResizeObserver(size); this._ro.observe(cv);
+    // slow flowing thermal-gradient mesh: cold violet -> warm violet blobs
+    const blobs = [
+      { x: .22, y: .30, r: .55, h: 252, sx: .00011, sy: .00007, p: 0 },    // cold blue-violet
+      { x: .72, y: .22, r: .48, h: 275, sx: .00008, sy: .00012, p: 2.1 },  // violet
+      { x: .50, y: .75, r: .60, h: 300, sx: .00013, sy: .00009, p: 4.2 },  // warm magenta-violet
+      { x: .88, y: .65, r: .42, h: 318, sx: .00007, sy: .00011, p: 1.3 }   // hot
+    ];
+    const draw = t => {
+      const w = cv.width, h = cv.height, dark = this.isDark;
+      ctx.clearRect(0, 0, w, h);
+      blobs.forEach(b => {
+        const bx = (b.x + 0.09 * Math.sin(t * b.sx + b.p)) * w;
+        const by = (b.y + 0.07 * Math.cos(t * b.sy + b.p)) * h;
+        const rr = b.r * Math.max(w, h) * 0.72;
+        const g = ctx.createRadialGradient(bx, by, 0, bx, by, rr);
+        const a = dark ? 0.16 : 0.13, l = dark ? '60%' : '72%', c = dark ? 0.16 : 0.13;
+        g.addColorStop(0, `oklch(${l} ${c} ${b.h} / ${a})`);
+        g.addColorStop(1, 'transparent');
+        ctx.fillStyle = g;
+        ctx.beginPath(); ctx.arc(bx, by, rr, 0, Math.PI * 2); ctx.fill();
+      });
+    };
+    if (this.reduced) { draw(0); return; }
+    const loop = t => { draw(t); this._raf = requestAnimationFrame(loop); };
+    this._raf = requestAnimationFrame(loop);
+  }
+  renderVals() {
+    const T = (n, c) => ({ n, c });
+    const py = T('Python', '#3776AB'), skl = T('scikit-learn', '#F7931E'),
+      next = T('Next.js', '#737373'), ts = T('TypeScript', '#3178C6'),
+      supa = T('Supabase', '#3ECF8E'), looker = T('Looker Studio', '#669DF6');
+    const svg = d => ({ __html: `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">${d}</svg>` });
+    return {
+      themeCls: this.isDark ? 'dark' : '',
+      isDark: this.isDark, isLight: !this.isDark,
+      toggleTheme: () => {
+        const t = this.isDark ? 'light' : 'dark';
+        try { localStorage.setItem('gd-theme', t); } catch (e) {}
+        this.setState({ theme: t });
+      },
+      showBadgeVal: this.props.showBadge ?? true,
+      bgRef: this.bgRef, metricsRef: this.metricsRef,
+      formOpen: this.state.formOpen,
+      formCls: this.state.formOpen ? 'open' : '',
+      chevRot: this.state.formOpen ? 'rotate(180deg)' : 'rotate(0deg)',
+      toggleForm: () => this.setState(s => ({ formOpen: !s.formOpen })),
+      p1tags: [py, T('FastF1', '#E10600'), T('PySpark', '#E25A1C'), T('AWS S3', '#569A31'), T('BigQuery', '#4285F4'), T('XGBoost', '#189FDD'), looker, next, ts, T('Recharts', '#22B5BF'), T('Three.js', '#049EF4')],
+      p2tags: [py, T('xarray', '#E28931'), T('PostgreSQL', '#336791'), T('Docker', '#2496ED'), skl, T('statsmodels', '#3F51B5'), T('Power BI', '#F2C811'), T('FastAPI', '#009688'), next, T('Render', '#46E3B7')],
+      p3tags: [py, T('pandas', '#8B7CC8'), skl, T('Random Forest', '#2E7D32'), looker],
+      webProjects: [
+        { img: 'web-recalde', ph: 'Captura Recalde Inmobiliaria', name: 'Recalde Inmobiliaria', desc: 'Sitio para una inmobiliaria de la costa atlántica, en producción.', tags: [next, ts, supa, T('Vercel', '#737373')] },
+        { img: 'web-minini', ph: 'Captura Minini Propiedades', name: 'Minini Propiedades', desc: 'Migración completa de un sitio en WordPress a un desarrollo propio, con buscador avanzado, mapas interactivos y panel de administración.', tags: [next, ts, supa] },
+        { img: 'web-giacchino', ph: 'Captura Giacchino Propiedades', name: 'Giacchino Propiedades', desc: 'Desarrollo web integral para una agencia independiente.', tags: [next, ts, supa] },
+        { img: 'web-ecommerce', ph: 'Captura ecommerce de hardware', name: 'Ecommerce de hardware', desc: 'Tienda con comparador de componentes, mapa de stock por sucursal y visor 3D. Modelo didáctico.', tags: [next, T('Prisma', '#5A67D8'), supa] }
+      ],
+      eduProjects: [
+        { name: 'Constelaciones de recuerdo', desc: 'App Android que visualiza constelaciones e historias usando la API de la NASA, con chat integrado.', tags: [T('Kotlin', '#7F52FF'), T('Android Studio', '#3DDC84')] },
+        { name: 'Challenge amigo secreto', desc: 'Sorteo de amigo invisible en JavaScript puro.', tags: [T('HTML', '#E34F26'), T('CSS', '#1572B6'), T('JavaScript', '#D9B411')] },
+        { name: 'Kumo Ramen', desc: 'Sitio de restaurante con carga de productos, pedidos y ranking de usuarios.', tags: [T('PHP', '#777BB4'), T('MySQL', '#4479A1'), T('jQuery', '#0769AD')] }
+      ],
+      stackGroups: [
+        { title: 'Análisis y machine learning', icon: svg('<path d="M3 3v18h18"></path><path d="M7 14l4-4 3 3 5-6"></path>'), tags: [py, T('pandas', '#8B7CC8'), T('NumPy', '#4DABCF'), skl, T('XGBoost', '#189FDD'), T('Random Forest', '#2E7D32'), T('Isolation Forest', '#7CB342'), T('SARIMA', '#3F51B5'), T('statsmodels', '#3F51B5')] },
+        { title: 'Ingeniería de datos', icon: svg('<ellipse cx="12" cy="5" rx="8" ry="3"></ellipse><path d="M4 5v14c0 1.7 3.6 3 8 3s8-1.3 8-3V5"></path><path d="M4 12c0 1.7 3.6 3 8 3s8-1.3 8-3"></path>'), tags: [T('SQL', '#E38C00'), T('PostgreSQL', '#336791'), T('PySpark', '#E25A1C'), T('AWS S3', '#569A31'), T('BigQuery', '#4285F4'), T('Docker', '#2496ED'), T('GitHub Actions', '#2088FF'), T('Parquet', '#50ABF1'), T('xarray', '#E28931')] },
+        { title: 'Visualización y BI', icon: svg('<rect x="3" y="12" width="4" height="8" rx="1"></rect><rect x="10" y="7" width="4" height="13" rx="1"></rect><rect x="17" y="3" width="4" height="17" rx="1"></rect>'), tags: [T('Power BI', '#F2C811'), looker, T('Excel', '#217346'), T('Recharts', '#22B5BF'), T('GeoPandas', '#139C5A'), T('Folium', '#77B829')] },
+        { title: 'Desarrollo y cloud', icon: svg('<path d="M16 18l6-6-6-6M8 6l-6 6 6 6"></path>'), tags: [next, T('React', '#61DAFB'), ts, T('Tailwind', '#38BDF8'), T('FastAPI', '#009688'), supa, T('Vercel', '#737373'), T('Render', '#46E3B7'), T('Git', '#F05032')] }
+      ],
+      certs: [
+        { abbr: 'UADE', bg: '#EDE8FE', fg: '#7C5CF0', name: 'Tecnicatura en Desarrollo de Software', org: 'UADE · finalización prevista 2026' },
+        { abbr: 'G', bg: '#E8F0FE', fg: '#4285F4', name: 'Google Advanced Data Analytics Professional Certificate', org: 'Google' },
+        { abbr: 'IBM', bg: '#E6EBF5', fg: '#0F62FE', name: 'Python for Data Science', org: 'IBM' },
+        { abbr: 'AWS', bg: '#FDF0E0', fg: '#C77A1F', name: 'AWS Cloud Fundamentals', org: 'AWS' }
+      ]
+    };
+  }
+}
+</script>
+</body>
+</html>
