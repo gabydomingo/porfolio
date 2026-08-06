@@ -73,19 +73,24 @@ export default function ProyectosDestacados() {
             </div>
 
             <div className="mt-[2px] flex flex-wrap gap-[10px]">
-              {p.enlaces.map((e) => (
-                <a
-                  key={e.texto}
-                  href={e.href}
-                  className={`${enlaceBase} ${
-                    e.principal
-                      ? 'bg-vio text-white hover:text-white'
-                      : 'bg-surf shadow-soft'
-                  }`}
-                >
-                  {e.texto}
-                </a>
-              ))}
+              {p.enlaces.map((e) => {
+                const externo = e.href.startsWith('http');
+                return (
+                  <a
+                    key={e.texto}
+                    href={e.href}
+                    target={externo ? '_blank' : undefined}
+                    rel={externo ? 'noopener' : undefined}
+                    className={`${enlaceBase} ${
+                      e.principal
+                        ? 'bg-vio text-white hover:text-white'
+                        : 'bg-surf shadow-soft'
+                    }`}
+                  >
+                    {e.texto}
+                  </a>
+                );
+              })}
             </div>
           </div>
         </article>

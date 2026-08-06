@@ -31,9 +31,16 @@ export const destacados = [
       'Three.js',
     ],
     enlaces: [
-      { texto: 'Ver dashboard', href: '#', principal: true },
-      { texto: 'Ver BI en Looker Studio', href: '#' },
-      { texto: 'Código', href: '#' },
+      {
+        texto: 'Ver dashboard',
+        href: 'https://f1-data-two.vercel.app/',
+        principal: true,
+      },
+      {
+        texto: 'Ver BI en Looker Studio',
+        href: 'https://datastudio.google.com/reporting/08593df1-5291-419c-847a-ce256097384e',
+      },
+      { texto: 'Código', href: 'https://github.com/gabydomingo/f1-data' },
     ],
   },
   {
@@ -66,8 +73,15 @@ export const destacados = [
       'Render',
     ],
     enlaces: [
-      { texto: 'Probar el detector', href: '#', principal: true },
-      { texto: 'Código', href: '#' },
+      {
+        texto: 'Probar el detector',
+        href: 'https://anomalias-oceanicas-phi.vercel.app/',
+        principal: true,
+      },
+      {
+        texto: 'Código',
+        href: 'https://github.com/gabydomingo/anomalias-oceanicas',
+      },
     ],
   },
   {
