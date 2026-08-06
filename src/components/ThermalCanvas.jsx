@@ -9,20 +9,26 @@ const blobs = [
   { x: 0.88, y: 0.65, r: 0.42, h: 318, sx: 0.00007, sy: 0.00011, p: 1.3 },
 ];
 
+const movimientoReducido = () =>
+  window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
 export default function ThermalCanvas({ isDark }) {
   const canvasRef = useRef(null);
   // El loop lee el tema desde un ref. Si isDark fuera dependencia del effect,
   // cada toggle destruiría el loop y el ResizeObserver para rearmarlos igual.
   const oscuroRef = useRef(isDark);
+  const dibujarRef = useRef(null);
 
   useEffect(() => {
     oscuroRef.current = isDark;
+    // Sin loop no hay quien repinte el cuadro único cuando cambia el tema.
+    if (movimientoReducido()) dibujarRef.current?.(0);
   }, [isDark]);
 
   useEffect(() => {
     const cv = canvasRef.current;
     const ctx = cv.getContext('2d');
-    const quieto = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const quieto = movimientoReducido();
 
     const dibujar = (t) => {
       const w = cv.width;
@@ -47,6 +53,8 @@ export default function ThermalCanvas({ isDark }) {
       });
     };
 
+    dibujarRef.current = dibujar;
+
     // Cambiar width o height borra el canvas, así que sin loop hay que
     // repintar el cuadro único después de cada resize.
     const medir = () => {
@@ -59,7 +67,11 @@ export default function ThermalCanvas({ isDark }) {
     const ro = new ResizeObserver(medir);
     ro.observe(cv);
 
-    if (quieto) return () => ro.disconnect();
+    if (quieto)
+      return () => {
+        dibujarRef.current = null;
+        ro.disconnect();
+      };
 
     let raf = requestAnimationFrame(function loop(t) {
       dibujar(t);
@@ -67,6 +79,7 @@ export default function ThermalCanvas({ isDark }) {
     });
 
     return () => {
+      dibujarRef.current = null;
       cancelAnimationFrame(raf);
       ro.disconnect();
     };
