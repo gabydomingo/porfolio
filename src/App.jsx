@@ -1,3 +1,12 @@
+import Nav from './components/Nav';
+import useTheme from './hooks/useTheme';
+
 export default function App() {
-  return null;
+  const { isDark, toggleTheme } = useTheme();
+
+  return (
+    <div className="min-h-screen overflow-x-clip bg-bg text-txt transition-colors duration-300">
+      <Nav isDark={isDark} toggleTheme={toggleTheme} />
+    </div>
+  );
 }

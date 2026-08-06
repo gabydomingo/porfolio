@@ -10,6 +10,13 @@
       rel="stylesheet"
     />
     <title>porfolio-GabyDomingo</title>
+    <script>
+      // Antes de la primera pintura, para que el modo oscuro no parpadee
+      try {
+        if (localStorage.getItem('gd-theme') === 'dark')
+          document.documentElement.classList.add('dark');
+      } catch (e) {}
+    </script>
   </head>
   <body>
     <div id="root"></div>
