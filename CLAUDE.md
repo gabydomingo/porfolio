@@ -135,6 +135,14 @@ La opacidad, la luminosidad y el croma cambian según el tema. Un
 `ResizeObserver` redimensiona el canvas. El `requestAnimationFrame` se cancela
 al desmontar.
 
+Con `prefers-reduced-motion` hay dos correcciones deliberadas respecto de la
+referencia, y son el mismo problema con dos disparadores: sin loop no queda
+nadie que repinte el cuadro único cuando cambia algo que lo define. Asignar
+`width` o `height` borra el canvas, así que `medir()` repinta después de cada
+resize; y el effect que sincroniza el tema repinta también al cambiarlo, porque
+si no los blobs conservan los colores del tema anterior. La referencia no hace
+ninguna de las dos: nunca se probó con movimiento reducido.
+
 **Movimiento reducido.** Con `prefers-reduced-motion` los revelados quedan
 visibles de entrada, los contadores muestran el valor final directo, y el
 canvas dibuja un solo cuadro sin loop.
