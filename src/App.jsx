@@ -1,6 +1,9 @@
+import DesarrolloWeb from './components/DesarrolloWeb';
 import Hero from './components/Hero';
 import Nav from './components/Nav';
 import ProyectosDestacados from './components/ProyectosDestacados';
+import ProyectosFormacion from './components/ProyectosFormacion';
+import StackTecnico from './components/StackTecnico';
 import useReveal from './hooks/useReveal';
 import useTheme from './hooks/useTheme';
 
@@ -14,6 +17,9 @@ export default function App() {
       <Hero isDark={isDark} />
       <main className="flex flex-col gap-[110px] px-6 pt-10 pb-[90px]">
         <ProyectosDestacados />
+        <DesarrolloWeb />
+        <ProyectosFormacion />
+        <StackTecnico />
       </main>
     </div>
   );

@@ -100,3 +100,64 @@ export const destacados = [
     ],
   },
 ];
+
+export const web = [
+  {
+    id: 'recalde',
+    nombre: 'Recalde Inmobiliaria',
+    descripcion:
+      'Sitio para una inmobiliaria de la costa atlántica, en producción.',
+    imagen: '/proyectos/recalde.png',
+    placeholder: 'Captura Recalde Inmobiliaria',
+    tags: ['Next.js', 'TypeScript', 'Supabase', 'Vercel'],
+  },
+  {
+    id: 'minini',
+    nombre: 'Minini Propiedades',
+    descripcion:
+      'Migración completa de un sitio en WordPress a un desarrollo propio, con buscador avanzado, mapas interactivos y panel de administración.',
+    imagen: '/proyectos/minprop.png',
+    placeholder: 'Captura Minini Propiedades',
+    tags: ['Next.js', 'TypeScript', 'Supabase'],
+  },
+  {
+    id: 'giacchino',
+    nombre: 'Giacchino Propiedades',
+    descripcion: 'Desarrollo web integral para una agencia independiente.',
+    imagen: '/proyectos/giachiprop.png',
+    placeholder: 'Captura Giacchino Propiedades',
+    tags: ['Next.js', 'TypeScript', 'Supabase'],
+  },
+  {
+    id: 'ecommerce',
+    nombre: 'Ecommerce de hardware',
+    descripcion:
+      'Tienda con comparador de componentes, mapa de stock por sucursal y visor 3D. Modelo didáctico.',
+    imagen: '/proyectos/pczone-web-cap.png',
+    placeholder: 'Captura ecommerce de hardware',
+    tags: ['Next.js', 'Prisma', 'Supabase'],
+  },
+];
+
+export const formacion = [
+  {
+    id: 'constelaciones',
+    nombre: 'Constelaciones de recuerdo',
+    descripcion:
+      'App Android que visualiza constelaciones e historias usando la API de la NASA, con chat integrado.',
+    tags: ['Kotlin', 'Android Studio'],
+  },
+  {
+    id: 'amigo-secreto',
+    nombre: 'Challenge amigo secreto',
+    descripcion: 'Sorteo de amigo invisible en JavaScript puro.',
+    tags: ['HTML', 'CSS', 'JavaScript'],
+  },
+  {
+    id: 'kumo',
+    nombre: 'Kumo Ramen',
+    descripcion:
+      'Sitio de restaurante con carga de productos, pedidos y ranking de usuarios.',
+    tags: ['PHP', 'MySQL', 'jQuery'],
+  },
+];

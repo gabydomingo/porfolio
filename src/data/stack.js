@@ -1,0 +1,60 @@
+// El icono de cada grupo vive en StackTecnico.jsx; acá solo se lo nombra.
+export const grupos = [
+  {
+    id: 'analisis',
+    titulo: 'Análisis y machine learning',
+    tags: [
+      'Python',
+      'pandas',
+      'NumPy',
+      'scikit-learn',
+      'XGBoost',
+      'Random Forest',
+      'Isolation Forest',
+      'SARIMA',
+      'statsmodels',
+    ],
+  },
+  {
+    id: 'datos',
+    titulo: 'Ingeniería de datos',
+    tags: [
+      'SQL',
+      'PostgreSQL',
+      'PySpark',
+      'AWS S3',
+      'BigQuery',
+      'Docker',
+      'GitHub Actions',
+      'Parquet',
+      'xarray',
+    ],
+  },
+  {
+    id: 'bi',
+    titulo: 'Visualización y BI',
+    tags: [
+      'Power BI',
+      'Looker Studio',
+      'Excel',
+      'Recharts',
+      'GeoPandas',
+      'Folium',
+    ],
+  },
+  {
+    id: 'desarrollo',
+    titulo: 'Desarrollo y cloud',
+    tags: [
+      'Next.js',
+      'React',
+      'TypeScript',
+      'Tailwind',
+      'FastAPI',
+      'Supabase',
+      'Vercel',
+      'Render',
+      'Git',
+    ],
+  },
+];
