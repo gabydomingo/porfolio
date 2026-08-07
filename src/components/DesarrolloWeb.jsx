@@ -24,13 +24,13 @@ export default function DesarrolloWeb() {
             key={p.id}
             className="reveal pcard flex flex-col overflow-hidden rounded-2xl bg-surf shadow-soft transition-[transform,box-shadow] duration-[250ms] hover:-translate-y-1 hover:shadow-card"
           >
-            <div className="relative h-40 overflow-hidden">
+            <div className="relative aspect-[16/9] overflow-hidden">
               <div className="pzoom absolute inset-0">
                 {p.imagen ? (
                   <img
                     src={p.imagen}
                     alt={p.nombre}
-                    className="h-full w-full object-cover"
+                    className="h-full w-full object-cover object-top"
                   />
                 ) : (
                   <div className="flex h-full w-full items-center justify-center bg-[#e4e4e7] px-4 text-center text-[13px] text-[#52525b] dark:bg-[#2a2733] dark:text-[#9b95ad]">

@@ -30,15 +30,14 @@ export default function ProyectosDestacados() {
           }`}
         >
           <div
-            className="relative min-w-[280px] flex-[1_1_440px] overflow-hidden rounded-2xl shadow-card"
-            style={{ minHeight: `${p.altoMin}px` }}
+            className="relative aspect-[16/10] min-w-[280px] flex-[1_1_440px] self-start overflow-hidden rounded-2xl shadow-card"
           >
             <div className="pzoom absolute inset-0">
               {p.imagen ? (
                 <img
                   src={p.imagen}
                   alt={p.titulo}
-                  className="h-full w-full object-cover"
+                  className="h-full w-full object-cover object-top"
                 />
               ) : (
                 <div className="flex h-full w-full items-center justify-center bg-[#e4e4e7] px-6 text-center text-[13px] text-[#52525b] dark:bg-[#2a2733] dark:text-[#9b95ad]">

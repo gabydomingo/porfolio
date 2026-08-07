@@ -5,7 +5,6 @@ export const destacados = [
     titulo: 'Plataforma de estrategia y telemetría de Fórmula 1',
     imagen: '/proyectos/f1.png',
     placeholder: 'Captura del dashboard de telemetría F1',
-    altoMin: 320,
     problema:
       'Decidir en qué vuelta parar a cambiar neumáticos es la decisión de mayor impacto de una carrera, y depende de estimar cuánto se está degradando el compuesto en tiempo real.',
     datos:
@@ -48,7 +47,6 @@ export const destacados = [
     titulo: 'Detección de anomalías oceánicas en la costa de Mar del Plata',
     imagen: '/proyectos/anomalias.png',
     placeholder: 'Captura del detector de anomalías oceánicas',
-    altoMin: 320,
     problema:
       'Las olas de calor marinas afectan directamente a la pesca y al turismo de la costa bonaerense, pero no existe una herramienta accesible que las detecte y las muestre.',
     datos:
@@ -89,7 +87,6 @@ export const destacados = [
     titulo: 'Análisis de siniestros viales en autopistas de AUSA',
     imagen: '/proyectos/ausa.png',
     placeholder: 'Captura del tablero de siniestros AUSA',
-    altoMin: 300,
     problema:
       'Anticipar qué siniestros van a ser graves permite dimensionar mejor la respuesta de emergencia.',
     datos:
