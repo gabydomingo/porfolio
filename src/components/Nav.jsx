@@ -1,11 +1,11 @@
 const enlaces = [
   { href: '#proyectos', texto: 'Proyectos' },
-  { href: '#tecnologias', texto: 'Tecnologías' },
+  { href: '#tecnologias', texto: 'Stack' },
   { href: '#sobre-mi', texto: 'Sobre mí' },
   { href: '#contacto', texto: 'Contacto' },
 ];
 
-export default function Nav({ isDark, toggleTheme }) {
+export default function Nav({ isDark, toggleTheme, idioma, alternarIdioma }) {
   return (
     <nav className="nav-pill fixed top-[14px] left-1/2 z-50 flex max-w-[calc(100vw-20px)] -translate-x-1/2 items-center gap-0 overflow-x-auto rounded-full px-1.5 py-1.5 shadow-soft sm:gap-[2px] sm:px-[10px] sm:py-[6px]">
       {enlaces.map((e) => (
@@ -50,6 +50,14 @@ export default function Nav({ isDark, toggleTheme }) {
             <path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z" />
           </svg>
         )}
+      </button>
+      <button
+        type="button"
+        onClick={alternarIdioma}
+        aria-label={idioma === 'es' ? 'Switch to English' : 'Cambiar a español'}
+        className="flex h-11 w-8 shrink-0 cursor-pointer items-center justify-center rounded-full bg-transparent text-[11px] font-semibold text-txt hover:bg-viosoft sm:h-8"
+      >
+        {idioma === 'es' ? 'EN' : 'ES'}
       </button>
     </nav>
   );

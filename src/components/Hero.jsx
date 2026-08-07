@@ -1,5 +1,6 @@
 import ThermalCanvas from './ThermalCanvas';
 import useCounter from '../hooks/useCounter';
+import { t, textos } from '../data/textos';
 
 const metricas = [
   { valor: 43, sufijo: 'M', etiqueta: 'registros procesados' },
@@ -14,7 +15,7 @@ const objetivos = metricas.map((m) => m.valor);
 const botonSecundario =
   'boton inline-flex items-center gap-2 rounded-xl bg-surf px-5 py-3 text-[15px] font-semibold shadow-soft transition-transform duration-200 hover:-translate-y-0.5';
 
-export default function Hero({ isDark }) {
+export default function Hero({ isDark, idioma }) {
   const { hostRef, valores } = useCounter(objetivos);
 
   return (
@@ -50,7 +51,7 @@ export default function Hero({ isDark }) {
           >
             Ver proyectos
           </a>
-          <a href="/DomingoGabrielCV.pdf" download className={botonSecundario}>
+          <a href={t(textos.cv, idioma)} download className={botonSecundario}>
             <svg
               width="16"
               height="16"

@@ -48,14 +48,17 @@
       rel="stylesheet"
     />
     <script>
-      // Antes de la primera pintura, para que el tema no parpadee. El default
-      // es oscuro: solo queda claro si el visitante lo eligió antes
+      // Antes de la primera pintura. El tema por defecto es oscuro y el idioma
+      // español: solo cambian si el visitante los eligió antes
       (function () {
         var tema = null;
+        var idioma = null;
         try {
           tema = localStorage.getItem('gd-theme');
+          idioma = localStorage.getItem('gd-lang');
         } catch (e) {}
         if (tema !== 'light') document.documentElement.classList.add('dark');
+        if (idioma === 'en') document.documentElement.lang = 'en';
       })();
     </script>
   </head>
