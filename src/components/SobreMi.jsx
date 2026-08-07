@@ -5,9 +5,13 @@ export default function SobreMi() {
       className="mx-auto w-full max-w-[920px] scroll-mt-[90px]"
     >
       <div className="reveal flex flex-wrap items-center gap-10">
-        {/* 260x300 exactos: cuando llegue la foto no se corre el layout */}
-        <div className="flex h-[300px] w-[260px] flex-none items-center justify-center rounded-2xl bg-[#e4e4e7] px-6 text-center text-[13px] text-[#52525b] shadow-card dark:bg-[#2a2733] dark:text-[#9b95ad]">
-          <img src="img-GB.jpg" alt="Foto de Gaby Domingo" />
+        {/* 260x300 exactos, con la foto recortada para llenarlos */}
+        <div className="h-[300px] w-[260px] flex-none overflow-hidden rounded-2xl shadow-card">
+          <img
+            src="/proyectos/img-GB.jpg"
+            alt="Foto de Gabriel Domingo"
+            className="h-full w-full object-cover"
+          />
         </div>
 
         <div className="flex flex-[1_1_380px] flex-col gap-4">
