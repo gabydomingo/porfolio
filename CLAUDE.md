@@ -303,13 +303,9 @@ no hay scroll horizontal ni elementos que se pasen del viewport.
 
 ## Pendientes que dependen de Gabriel
 
-- Las capturas de dos de los tres proyectos destacados: la del dashboard de
-  telemetría de F1 y la del detector de anomalías oceánicas.
-- La foto para Sobre mí, 260x300 con radio 16. El placeholder ya tiene esas
-  medidas exactas para que al reemplazarlo no se mueva el layout.
-- Los dos links de AUSA, notebook y dashboard, que siguen en `#`.
+Ninguno. Están en su lugar el CV, la foto de Sobre mí, `og-image.png`, las
+siete capturas y los quince enlaces de proyecto.
 
-Ya resueltos: el CV en `public/DomingoGabrielCV.pdf`, la captura de AUSA y las
-cuatro de desarrollo web en `public/proyectos/`, y los links de F1 y del
-detector oceánico. Las tarjetas de desarrollo web no llevan enlace: el diseño
-las define como informativas, no es un pendiente.
+Dos cosas que parecen faltantes y no lo son: los proyectos de formación van sin
+captura por decisión de diseño, y las tarjetas de desarrollo web de las
+inmobiliarias solo llevan el enlace al sitio porque los repos son privados.
