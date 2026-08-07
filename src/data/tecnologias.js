@@ -24,6 +24,8 @@ export const tecnologias = {
   'Power BI': '#F2C811',
   'Looker Studio': '#669DF6',
   Excel: '#217346',
+  matplotlib: '#11557C',
+  seaborn: '#4C72B0',
   Recharts: '#22B5BF',
   GeoPandas: '#139C5A',
   Folium: '#77B829',
@@ -40,6 +42,7 @@ export const tecnologias = {
   Prisma: '#5A67D8',
   'Three.js': '#049EF4',
 
+  Java: '#E76F00',
   Kotlin: '#7F52FF',
   'Android Studio': '#3DDC84',
   HTML: '#E34F26',
