@@ -7,12 +7,12 @@ const enlaces = [
 
 export default function Nav({ isDark, toggleTheme }) {
   return (
-    <nav className="nav-pill fixed top-[14px] left-1/2 z-50 flex max-w-[calc(100vw-20px)] -translate-x-1/2 items-center gap-[2px] rounded-full px-[10px] py-[6px] shadow-soft">
+    <nav className="nav-pill fixed top-[14px] left-1/2 z-50 flex max-w-[calc(100vw-20px)] -translate-x-1/2 items-center gap-0 overflow-x-auto rounded-full px-1.5 py-1.5 shadow-soft sm:gap-[2px] sm:px-[10px] sm:py-[6px]">
       {enlaces.map((e) => (
         <a
           key={e.href}
           href={e.href}
-          className="rounded-full px-[11px] py-[7px] text-[13.5px] font-medium hover:bg-viosoft"
+          className="shrink-0 rounded-full px-1.5 py-3 text-[13px] font-medium whitespace-nowrap hover:bg-viosoft sm:px-[11px] sm:py-[7px] sm:text-[13.5px]"
         >
           {e.texto}
         </a>
@@ -21,7 +21,7 @@ export default function Nav({ isDark, toggleTheme }) {
         type="button"
         onClick={toggleTheme}
         aria-label="Cambiar tema"
-        className="flex h-8 w-8 cursor-pointer items-center justify-center rounded-full bg-transparent text-txt hover:bg-viosoft"
+        className="flex h-11 w-8 shrink-0 cursor-pointer items-center justify-center rounded-full bg-transparent text-txt hover:bg-viosoft sm:h-8"
       >
         {isDark ? (
           <svg

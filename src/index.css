@@ -80,11 +80,16 @@
 }
 
 @layer components {
-  /* Barra de navegación flotante */
+  /* Barra de navegación flotante. El scroll horizontal es la reserva para
+     pantallas más angostas que 357px: la barra no se muestra nunca */
   .nav-pill {
     background: var(--pill);
     backdrop-filter: blur(14px);
     -webkit-backdrop-filter: blur(14px);
+    scrollbar-width: none;
+  }
+  .nav-pill::-webkit-scrollbar {
+    display: none;
   }
 
   /* Revelado al hacer scroll. El IntersectionObserver agrega .rv-in */
