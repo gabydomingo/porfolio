@@ -22,18 +22,13 @@ export default function Hero({ isDark }) {
       <ThermalCanvas isDark={isDark} />
 
       <div className="relative mx-auto flex max-w-[760px] flex-col gap-[22px]">
-        <div className="flex flex-wrap items-center gap-[18px]">
-          <div className="flex h-22 w-22 flex-none items-center justify-center rounded-full bg-[#e4e4e7] text-center text-[11px] leading-tight text-[#52525b] shadow-soft dark:bg-[#2a2733] dark:text-[#9b95ad]">
-            Foto
-          </div>
-          <a
-            href="#contacto"
-            className="inline-flex items-center gap-[9px] rounded-full bg-surf px-[15px] py-2 text-[13.5px] font-medium shadow-soft"
-          >
-            <span className="pulse-dot h-[9px] w-[9px] rounded-full bg-green" />
-            Disponible para trabajar
-          </a>
-        </div>
+        <a
+          href="#contacto"
+          className="inline-flex self-start items-center gap-[9px] rounded-full bg-surf px-[15px] py-2 text-[13.5px] font-medium shadow-soft"
+        >
+          <span className="pulse-dot h-[9px] w-[9px] rounded-full bg-green" />
+          Disponible para trabajar
+        </a>
 
         <h1 className="font-display m-0 text-[clamp(38px,6.5vw,58px)] leading-[1.05] font-extrabold tracking-[-0.03em]">
           Hola, soy Gabriel
