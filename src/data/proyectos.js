@@ -106,8 +106,14 @@ export const destacados = [
       'Looker Studio',
     ],
     enlaces: [
-      { texto: 'Ver notebook', href: '#' },
-      { texto: 'Ver dashboard', href: '#' },
+      {
+        texto: 'Ver notebook',
+        href: 'https://colab.research.google.com/drive/1Akj3H08Wwt4TvxYoQcmotAAHq2Ry4_iY?usp=sharing',
+      },
+      {
+        texto: 'Ver dashboard',
+        href: 'https://datastudio.google.com/reporting/a67177eb-c4c4-4320-b3bd-4169fba868a2',
+      },
     ],
   },
 ];
