@@ -220,7 +220,10 @@ componente.
 
 **Meta tags.** El `title` y las tres descriptions —normal, `og:` y `twitter:`—
 dicen analista de datos, que es lo que se ve en Google y en la tarjeta de
-LinkedIn. `og:image` apunta a `/og-image.png` con `1200x630` declarados.
+LinkedIn. `og:image` y `twitter:image` apuntan a
+`https://gabrieldomingo.vercel.app/og-image.png`, con `1200x630` declarados. La
+URL va absoluta y no relativa porque varios scrapers, LinkedIn entre ellos, no
+resuelven la ruta relativa. Si el dominio cambia, hay que tocar los dos.
 
 ## Estilo de código
 
@@ -306,9 +309,6 @@ no hay scroll horizontal ni elementos que se pasen del viewport.
   medidas exactas para que al reemplazarlo no se mueva el layout.
 - `public/og-image.png`, 1200x630.
 - Los dos links de AUSA, notebook y dashboard, que siguen en `#`.
-- Pasar `og:image` a URL absoluta. Bloqueado: espera a que el proyecto quede
-  con su nombre definitivo en Vercel, para no escribir el dominio dos veces.
-  Varios scrapers, LinkedIn entre ellos, no resuelven la ruta relativa.
 
 Ya resueltos: el CV en `public/DomingoGabrielCV.pdf`, la captura de AUSA y las
 cuatro de desarrollo web en `public/proyectos/`, y los links de F1 y del
