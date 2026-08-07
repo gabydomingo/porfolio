@@ -15,7 +15,9 @@ export default function Contacto({ idioma }) {
         {t(textos.secciones.contacto, idioma)}
       </h2>
 
-      <p>{t(textos.contacto.intro, idioma)}</p>
+      <p className="reveal m-0 max-w-[480px] text-[16.5px] leading-[1.65] text-sec [text-wrap:pretty]">
+        {t(textos.contacto.intro, idioma)}
+      </p>
 
       <div className="reveal flex flex-wrap justify-center gap-3">
         <a
