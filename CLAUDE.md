@@ -194,6 +194,17 @@ daría un peso visual que no les corresponde al lado de los proyectos de datos.
 El acordeón anima la altura con `grid-template-rows` en la clase `.acc`, sin
 medir nada en JS.
 
+**Enlaces en desarrollo web y formación.** La referencia deja esas tarjetas sin
+enlace. Acá sí lo llevan, y es una desviación deliberada: son sitios en
+producción y repos públicos, y esconderlos no tiene sentido en un portfolio. El
+criterio de botones es el mismo que en los destacados —violeta sólido para lo
+que se puede ver funcionando, superficie para el código— pero con la tipografía
+achicada a 13px en las tarjetas web y a 11,5px en el acordeón, para que no le
+ganen en peso a la tarjeta que los contiene. Cuando hay un solo enlace va un
+solo botón: nada de un segundo botón deshabilitado. En los proyectos web de
+inmobiliarias el repo es privado, así que solo va el sitio; en pcZone es al
+revés y solo va el código.
+
 **Enlaces externos.** Los enlaces de proyecto llevan `target="_blank"` y
 `rel="noopener"` solo cuando el `href` arranca con `http`. Los que todavía
 apuntan a `#` no los llevan, porque en un ancla vacía sería incorrecto. La
