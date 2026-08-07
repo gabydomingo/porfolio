@@ -6,7 +6,7 @@ export const certificaciones = [
     bg: '#EDE8FE',
     fg: '#7C5CF0',
     nombre: 'Tecnicatura en Desarrollo de Software',
-    organizacion: 'UADE · +50% de la carrera aprobada',
+    organizacion: 'UADE · +75% completada',
   },
   {
     id: 'google',
