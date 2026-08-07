@@ -2,43 +2,50 @@
 <html lang="es">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Instrument+Sans:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@500;600&display=swap"
-      rel="stylesheet"
-    />
     <title>Gabriel Domingo — Analista de datos</title>
+
+    <!-- Las etiquetas de compartido van primero a propósito. LinkedIn pide el
+         HTML por rangos y responde 206: con og:image más abajo, después del
+         link de fuentes y de las descripciones largas, no llegaba a leerlo.
+         El ?v= es para que no reuse la miniatura que ya tenía cacheada -->
+    <meta
+      property="og:image"
+      content="https://gabrieldomingo.vercel.app/og-image.png?v=2"
+    />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://gabrieldomingo.vercel.app/" />
+    <meta property="og:title" content="Gabriel Domingo — Analista de datos" />
+    <meta property="og:locale" content="es_AR" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:image"
+      content="https://gabrieldomingo.vercel.app/og-image.png?v=2"
+    />
+    <meta name="twitter:title" content="Gabriel Domingo — Analista de datos" />
+
     <meta
       name="description"
       content="Analista de datos y desarrollador de Buenos Aires. Construyo pipelines de datos de punta a punta: extraigo, proceso, modelo y dejo el resultado funcionando en la nube."
     />
-    <meta name="author" content="Gabriel Domingo" />
-
-    <meta property="og:type" content="website" />
-    <meta property="og:locale" content="es_AR" />
-    <meta property="og:title" content="Gabriel Domingo — Analista de datos" />
     <meta
       property="og:description"
       content="Analista de datos y desarrollador de Buenos Aires. Construyo pipelines de datos de punta a punta: extraigo, proceso, modelo y dejo el resultado funcionando en la nube."
     />
     <meta
-      property="og:image"
-      content="https://gabrieldomingo.vercel.app/og-image.png"
-    />
-    <meta property="og:image:width" content="1200" />
-    <meta property="og:image:height" content="630" />
-
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Gabriel Domingo — Analista de datos" />
-    <meta
       name="twitter:description"
       content="Analista de datos y desarrollador de Buenos Aires. Construyo pipelines de datos de punta a punta: extraigo, proceso, modelo y dejo el resultado funcionando en la nube."
     />
-    <meta
-      name="twitter:image"
-      content="https://gabrieldomingo.vercel.app/og-image.png"
+    <meta name="author" content="Gabriel Domingo" />
+
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Instrument+Sans:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@500;600&display=swap"
+      rel="stylesheet"
     />
     <script>
       // Antes de la primera pintura, para que el tema no parpadee. El default
