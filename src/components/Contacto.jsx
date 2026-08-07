@@ -1,7 +1,7 @@
 const EMAIL = 'domingogaby8@gmail.com';
 
 const enlaceSecundario =
-  'inline-flex items-center gap-2 rounded-xl bg-surf px-[22px] py-[14px] text-[15px] font-semibold shadow-soft transition-transform duration-200 hover:-translate-y-0.5';
+  'boton inline-flex items-center gap-2 rounded-xl bg-surf px-[22px] py-[14px] text-[15px] font-semibold shadow-soft transition-transform duration-200 hover:-translate-y-0.5';
 
 export default function Contacto() {
   return (
@@ -21,7 +21,7 @@ export default function Contacto() {
       <div className="reveal flex flex-wrap justify-center gap-3">
         <a
           href={`mailto:${EMAIL}`}
-          className="inline-flex items-center gap-[9px] rounded-xl bg-vio px-[26px] py-[14px] text-[15.5px] font-semibold text-white transition-[transform,box-shadow] duration-200 hover:-translate-y-0.5 hover:text-white hover:shadow-[0_8px_24px_rgb(124_92_240/0.4)]"
+          className="boton inline-flex items-center gap-[9px] rounded-xl bg-vio px-[26px] py-[14px] text-[15.5px] font-semibold text-white transition-[transform,box-shadow] duration-200 hover:-translate-y-0.5 hover:shadow-[0_8px_24px_rgb(124_92_240/0.4)]"
         >
           <svg
             width="17"

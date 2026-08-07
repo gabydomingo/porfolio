@@ -68,7 +68,10 @@
     color: inherit;
     text-decoration: none;
   }
-  a:hover {
+  /* El violeta del hover es para enlaces de texto. Los anclas con forma de
+     botón solo se elevan: cambiarles el color rompe el contraste del texto
+     blanco sobre el fondo violeta */
+  a:not(.boton):hover {
     color: var(--vio);
   }
   a:focus-visible,

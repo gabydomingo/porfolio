@@ -12,7 +12,7 @@ const metricas = [
 const objetivos = metricas.map((m) => m.valor);
 
 const botonSecundario =
-  'inline-flex items-center gap-2 rounded-xl bg-surf px-5 py-3 text-[15px] font-semibold shadow-soft transition-transform duration-200 hover:-translate-y-0.5';
+  'boton inline-flex items-center gap-2 rounded-xl bg-surf px-5 py-3 text-[15px] font-semibold shadow-soft transition-transform duration-200 hover:-translate-y-0.5';
 
 export default function Hero({ isDark }) {
   const { hostRef, valores } = useCounter(objetivos);
@@ -46,7 +46,7 @@ export default function Hero({ isDark }) {
         <div className="flex flex-wrap gap-3">
           <a
             href="#proyectos"
-            className="inline-flex items-center gap-2 rounded-xl bg-vio px-[22px] py-3 text-[15px] font-semibold text-white transition-[transform,box-shadow] duration-200 hover:-translate-y-0.5 hover:text-white hover:shadow-[0_8px_24px_rgb(124_92_240/0.4)]"
+            className="boton inline-flex items-center gap-2 rounded-xl bg-vio px-[22px] py-3 text-[15px] font-semibold text-white transition-[transform,box-shadow] duration-200 hover:-translate-y-0.5 hover:shadow-[0_8px_24px_rgb(124_92_240/0.4)]"
           >
             Ver proyectos
           </a>

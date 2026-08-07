@@ -2,7 +2,7 @@ import Tag from './Tag';
 import { destacados } from '../data/proyectos';
 
 const enlaceBase =
-  'inline-flex items-center gap-[7px] rounded-xl px-4 py-[9px] text-[13.5px] font-semibold transition-transform duration-200 hover:-translate-y-px';
+  'boton inline-flex items-center gap-[7px] rounded-xl px-4 py-[9px] text-[13.5px] font-semibold transition-transform duration-200 hover:-translate-y-px';
 
 function Bloque({ titulo, children }) {
   return (
@@ -83,7 +83,7 @@ export default function ProyectosDestacados() {
                     rel={externo ? 'noopener' : undefined}
                     className={`${enlaceBase} ${
                       e.principal
-                        ? 'bg-vio text-white hover:text-white'
+                        ? 'bg-vio text-white'
                         : 'bg-surf shadow-soft'
                     }`}
                   >
