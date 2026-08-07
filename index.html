@@ -35,11 +35,15 @@
     />
     <meta name="twitter:image" content="/og-image.png" />
     <script>
-      // Antes de la primera pintura, para que el modo oscuro no parpadee
-      try {
-        if (localStorage.getItem('gd-theme') === 'dark')
-          document.documentElement.classList.add('dark');
-      } catch (e) {}
+      // Antes de la primera pintura, para que el tema no parpadee. El default
+      // es oscuro: solo queda claro si el visitante lo eligió antes
+      (function () {
+        var tema = null;
+        try {
+          tema = localStorage.getItem('gd-theme');
+        } catch (e) {}
+        if (tema !== 'light') document.documentElement.classList.add('dark');
+      })();
     </script>
   </head>
   <body>
