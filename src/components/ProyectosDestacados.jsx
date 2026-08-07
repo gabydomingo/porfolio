@@ -30,7 +30,7 @@ export default function ProyectosDestacados() {
           }`}
         >
           <div
-            className="relative aspect-[16/10] min-w-[280px] flex-[1_1_440px] self-start overflow-hidden rounded-2xl shadow-card"
+            className="relative aspect-[16/10] min-w-[280px] flex-[1_1_440px] self-center overflow-hidden rounded-2xl shadow-card"
           >
             <div className="pzoom absolute inset-0">
               {p.imagen ? (
