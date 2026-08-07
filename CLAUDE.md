@@ -215,6 +215,25 @@ cada commit contenga un solo tipo de cambio y se entienda solo. En particular:
 
 Mensajes cortos en español, describiendo qué cambió y por qué si no es obvio.
 
+## Qué está verificado y cómo
+
+**El loop del canvas no tiene fuga.** Contando repintados del canvas contra
+frames del navegador durante 1,5s: 90 frames y 90 repintados después del doble
+montaje de StrictMode, y los mismos 90 y 90 después de cinco toggles de tema
+seguidos. Relación 1,00 en los dos casos, así que el cleanup cancela el
+`requestAnimationFrame` y el toggle no recrea el loop.
+
+Importa cómo se midió: con `prefers-reduced-motion` forzado a `no-preference`
+desde DevTools, no con la detección real. La máquina de desarrollo devuelve
+`reduce` y no cede ni apagando la opción en Windows. Eso prueba que la ruta
+animada no tiene fuga, pero **no** prueba que la detección del media query
+funcione en una máquina sin el modo reducido.
+
+**Deuda conocida: el reintento a los 3000ms de los contadores nunca se
+ejerció.** Solo corre cuando el `IntersectionObserver` no llegó a disparar, y
+con el observador vivo siempre gana alguna de las otras dos rutas. Para
+reproducirlo hay que anular el observador, así que quedó sin probar.
+
 ## Pendientes que dependen de Gabriel
 
 - Las capturas de dos de los tres proyectos destacados: la del dashboard de
