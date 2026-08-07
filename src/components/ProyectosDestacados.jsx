@@ -23,15 +23,12 @@ export default function ProyectosDestacados() {
       </h2>
 
       {destacados.map((p, i) => (
-        <article
-          key={p.id}
-          className={`reveal pcard flex flex-wrap items-stretch gap-9 ${
-            i % 2 === 1 ? 'flex-row-reverse' : ''
-          }`}
-        >
-          <div
-            className="relative aspect-[16/10] min-w-[280px] flex-[1_1_440px] self-center overflow-hidden rounded-2xl shadow-card"
-          >
+        <article key={p.id} className="reveal pcard flex flex-col gap-6">
+          <h3 className="font-display m-0 text-2xl leading-[1.2] font-bold tracking-[-0.02em]">
+            {p.titulo}
+          </h3>
+
+          <div className="relative aspect-[2/1] overflow-hidden rounded-2xl shadow-card">
             <div className="pzoom absolute inset-0">
               {p.imagen ? (
                 <img
@@ -47,50 +44,52 @@ export default function ProyectosDestacados() {
             </div>
           </div>
 
-          <div className="flex min-w-[280px] flex-[1_1_400px] flex-col justify-center gap-4">
-            <h3 className="font-display m-0 text-2xl leading-[1.2] font-bold tracking-[-0.02em]">
-              {p.titulo}
-            </h3>
+          {/* Dos columnas recién desde lg: abajo el texto queda en una sola,
+              que es como ya se veía apilado */}
+          <div className="grid gap-x-9 gap-y-4 lg:grid-cols-2">
+            <div
+              className={`flex flex-col gap-4 ${i % 2 === 1 ? 'lg:order-2' : ''}`}
+            >
+              <Bloque titulo="El problema.">{p.problema}</Bloque>
+              <Bloque titulo="Los datos.">{p.datos}</Bloque>
+            </div>
 
-            <Bloque titulo="El problema.">{p.problema}</Bloque>
-            <Bloque titulo="Los datos.">{p.datos}</Bloque>
-            <Bloque titulo="Cómo lo resolví.">{p.solucion}</Bloque>
-
-            <div className="rounded-2xl bg-surf px-5 py-[18px] shadow-soft">
-              <div className="font-mono text-[clamp(17px,2.4vw,21px)] font-semibold tracking-[-0.01em] text-green">
-                {p.resultado.titular}
+            <div className="flex flex-col gap-4">
+              <Bloque titulo="Cómo lo resolví.">{p.solucion}</Bloque>
+              <div className="rounded-2xl bg-surf px-5 py-[18px] shadow-soft">
+                <div className="font-mono text-[clamp(17px,2.4vw,21px)] font-semibold tracking-[-0.01em] text-green">
+                  {p.resultado.titular}
+                </div>
+                <p className="mt-[10px] mb-0 text-[14px] leading-[1.6] text-sec">
+                  {p.resultado.detalle}
+                </p>
               </div>
-              <p className="mt-[10px] mb-0 text-[14px] leading-[1.6] text-sec">
-                {p.resultado.detalle}
-              </p>
             </div>
+          </div>
 
-            <div className="flex flex-wrap gap-[7px]">
-              {p.tags.map((t) => (
-                <Tag key={t} nombre={t} />
-              ))}
-            </div>
+          <div className="flex flex-wrap gap-[7px]">
+            {p.tags.map((t) => (
+              <Tag key={t} nombre={t} />
+            ))}
+          </div>
 
-            <div className="mt-[2px] flex flex-wrap gap-[10px]">
-              {p.enlaces.map((e) => {
-                const externo = e.href.startsWith('http');
-                return (
-                  <a
-                    key={e.texto}
-                    href={e.href}
-                    target={externo ? '_blank' : undefined}
-                    rel={externo ? 'noopener' : undefined}
-                    className={`${enlaceBase} ${
-                      e.principal
-                        ? 'bg-vio text-white'
-                        : 'bg-surf shadow-soft'
-                    }`}
-                  >
-                    {e.texto}
-                  </a>
-                );
-              })}
-            </div>
+          <div className="flex flex-wrap gap-[10px]">
+            {p.enlaces.map((e) => {
+              const externo = e.href.startsWith('http');
+              return (
+                <a
+                  key={e.texto}
+                  href={e.href}
+                  target={externo ? '_blank' : undefined}
+                  rel={externo ? 'noopener' : undefined}
+                  className={`${enlaceBase} ${
+                    e.principal ? 'bg-vio text-white' : 'bg-surf shadow-soft'
+                  }`}
+                >
+                  {e.texto}
+                </a>
+              );
+            })}
           </div>
         </article>
       ))}
