@@ -62,10 +62,11 @@ src/
     useReveal.js
     useCounter.js
   index.css                -> tokens de tema, ya resuelto
-  App.jsx
+  App.jsx                  -> el footer va acá, inline: es una sola línea
   main.jsx
 public/
   proyectos/               -> capturas de los proyectos
+  og-image.png             -> 1200x630, para compartir en redes
 ```
 
 El contenido que se agrega o edita con frecuencia —proyectos, certificaciones,
@@ -100,6 +101,7 @@ claro en ninguna de las dos, se pregunta antes de decidir.
   `tailwind-merge`, `class-variance-authority` y `@radix-ui/react-toast`.
 - El alias `@` de `vite.config.js`: no quedó ningún import que lo use. Se borra
   la config muerta en vez de parchear el error de lint que daba `__dirname`.
+- `public/vite.svg`, que no lo referenciaba nadie. El favicon propio se queda.
 
 ## Detalles de implementación
 
@@ -147,6 +149,35 @@ ninguna de las dos: nunca se probó con movimiento reducido.
 visibles de entrada, los contadores muestran el valor final directo, y el
 canvas dibuja un solo cuadro sin loop.
 
+**Etiquetas de tecnología.** `Tag.jsx` tiene tres variantes con nombre
+—`tarjeta`, `suave` y `mini`—, que son las tres combinaciones de tamaño y fondo
+que usa la referencia. Las secciones eligen por nombre y no pasan estilos
+sueltos; si aparece una cuarta combinación, se pregunta antes de agregarla. El
+color de marca va solo en el punto y el texto usa `var(--txt)`: varios hex no
+llegan a contraste AA como color de texto, el amarillo de Power BI sobre fondo
+claro entre otros.
+
+**Íconos del stack.** Viven en `StackTecnico.jsx`, en un mapa indexado por el
+`id` del grupo, y `stack.js` solo los nombra. La referencia los inyecta con
+`dangerouslySetInnerHTML`, que acá no hace falta, y además `stack.js` no puede
+tener JSX por ser un `.js`.
+
+**Proyectos de formación.** Van sin captura, y es una decisión de diseño de la
+referencia que conviene respetar: son ejercicios de cursada, y una imagen les
+daría un peso visual que no les corresponde al lado de los proyectos de datos.
+El acordeón anima la altura con `grid-template-rows` en la clase `.acc`, sin
+medir nada en JS.
+
+**Enlaces externos.** Los enlaces de proyecto llevan `target="_blank"` y
+`rel="noopener"` solo cuando el `href` arranca con `http`. Los que todavía
+apuntan a `#` no los llevan, porque en un ancla vacía sería incorrecto. La
+condición se evalúa sola: al pegar un link real se aplica sin tocar el
+componente.
+
+**Meta tags.** El `title` y las tres descriptions —normal, `og:` y `twitter:`—
+dicen analista de datos, que es lo que se ve en Google y en la tarjeta de
+LinkedIn. `og:image` apunta a `/og-image.png` con `1200x630` declarados.
+
 ## Estilo de código
 
 - Comentarios en español, solo donde el código no se explica solo. Nada de
@@ -188,9 +219,16 @@ Mensajes cortos en español, describiendo qué cambió y por qué si no es obvio
 
 - Las capturas de dos de los tres proyectos destacados: la del dashboard de
   telemetría de F1 y la del detector de anomalías oceánicas.
-- La foto para el avatar del hero y para la sección Sobre mí.
-- Los links reales de cada proyecto (demo, repo, dashboard).
+- La foto, en dos lugares: el avatar del hero, círculo de 88px, y Sobre mí,
+  260x300 con radio 16. Los placeholders ya tienen esas medidas exactas para
+  que al reemplazarlos no se mueva el layout.
+- `public/og-image.png`, 1200x630.
+- Los dos links de AUSA, notebook y dashboard, que siguen en `#`.
+- Pasar `og:image` a URL absoluta. Bloqueado: espera a que el proyecto quede
+  con su nombre definitivo en Vercel, para no escribir el dominio dos veces.
+  Varios scrapers, LinkedIn entre ellos, no resuelven la ruta relativa.
 
-Ya resueltos: el CV está en `public/DomingoGabrielCV.pdf`, la captura de AUSA
-en `public/proyectos/ausa.png`, y las capturas de desarrollo web y de los
-proyectos de formación están todas en `public/proyectos/`.
+Ya resueltos: el CV en `public/DomingoGabrielCV.pdf`, la captura de AUSA y las
+cuatro de desarrollo web en `public/proyectos/`, y los links de F1 y del
+detector oceánico. Las tarjetas de desarrollo web no llevan enlace: el diseño
+las define como informativas, no es un pendiente.
