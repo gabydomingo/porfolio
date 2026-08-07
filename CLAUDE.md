@@ -149,6 +149,32 @@ ninguna de las dos: nunca se probó con movimiento reducido.
 visibles de entrada, los contadores muestran el valor final directo, y el
 canvas dibuja un solo cuadro sin loop.
 
+**Hero.** El avatar circular de la referencia no va: la única foto del sitio es
+la de Sobre mí. El badge "Disponible para trabajar" queda solo en su fila, con
+`self-start` para que el contenedor en columna no lo estire a lo ancho.
+
+**Hover de los enlaces.** El violeta del `a:hover` vale para enlaces de texto,
+no para los anclas con forma de botón, que llevan la clase `.boton` y quedan
+fuera por el `:not(.boton)` de `index.css`. En los botones sólidos cambiaría el
+blanco sobre violeta y en los de superficie tiñe un texto que ya funciona como
+botón; en los dos casos alcanza con que se eleven. Es una desviación
+deliberada: la referencia solo reprotege los sólidos, con un `color:#fff` en el
+`style-hover`, y deja que los de superficie se pongan violetas.
+
+**Nav en pantallas angostas.** Los cuatro enlaces más el toggle miden 402px, y
+la píldora no tiene `flex-wrap`: por debajo de 422px de viewport flexbox los
+comprime hasta su ancho mínimo y "Sobre mí", la única etiqueta con espacio, se
+parte en dos líneas. La solución es por breakpoint —Tailwind es mobile-first,
+así que la base es la móvil y `sm:` restaura los valores de la referencia—, con
+`whitespace-nowrap` y `shrink-0` para que nada se corte, y `overflow-x-auto`
+con la barra oculta como reserva por debajo de 357px. En móvil el padding
+horizontal baja a 6px y el vertical sube a 12px, así el enlace queda en 44px de
+alto táctil. El total baja a 337px.
+
+El toggle queda en 44px de alto pero 32px de ancho: llevarlo a 44x44 suma 12px
+y empuja el nav a 349px, que rompe los 360px de un Galaxy S8 o un iPhone 12
+mini. Se prefirió el ancho de pantalla sobre el área táctil del toggle.
+
 **Etiquetas de tecnología.** `Tag.jsx` tiene tres variantes con nombre
 —`tarjeta`, `suave` y `mini`—, que son las tres combinaciones de tamaño y fondo
 que usa la referencia. Las secciones eligen por nombre y no pasan estilos
@@ -229,18 +255,37 @@ desde DevTools, no con la detección real. La máquina de desarrollo devuelve
 animada no tiene fuga, pero **no** prueba que la detección del media query
 funcione en una máquina sin el modo reducido.
 
+**Los contadores animan, por dos de sus tres rutas.** Con
+`prefers-reduced-motion` apagado de verdad en Windows —está en la
+configuración de Rendimiento del sistema, no en Accesibilidad—, verificado en
+Chrome y en Firefox: los cuatro suben desde cero hasta 43, 4, 3 y 2. La ruta
+directa, la del rect visible al montar, y la del `IntersectionObserver` al
+bajar quedan las dos confirmadas. En la misma pasada se verificaron el
+movimiento de los blobs con su degradado de temperatura, el pulso del punto
+verde del badge y los revelados al scroll.
+
 **Deuda conocida: el reintento a los 3000ms de los contadores nunca se
 ejerció.** Solo corre cuando el `IntersectionObserver` no llegó a disparar, y
 con el observador vivo siempre gana alguna de las otras dos rutas. Para
 reproducirlo hay que anular el observador, así que quedó sin probar.
 
+**El nav entra en los tres anchos de teléfono.** Verificado con el device
+toolbar de Chrome a 360, 390 y 430px: "Sobre mí" en una línea, sin scroll
+horizontal y con la píldora alineada. El margen a 360px es de 3px, y es el peor
+caso real: midiendo el mismo nav con Instrument Sans, system-ui, Arial y Segoe
+UI, la tipografía del sitio resultó la más ancha de las cuatro, así que una
+fuente de reserva sin cargar no lo rompe.
+
+**Estructura del documento.** Las siete secciones salen en el orden de la
+referencia, hay un solo `<h1>`, la secuencia de encabezados no saltea niveles y
+no hay scroll horizontal ni elementos que se pasen del viewport.
+
 ## Pendientes que dependen de Gabriel
 
 - Las capturas de dos de los tres proyectos destacados: la del dashboard de
   telemetría de F1 y la del detector de anomalías oceánicas.
-- La foto, en dos lugares: el avatar del hero, círculo de 88px, y Sobre mí,
-  260x300 con radio 16. Los placeholders ya tienen esas medidas exactas para
-  que al reemplazarlos no se mueva el layout.
+- La foto para Sobre mí, 260x300 con radio 16. El placeholder ya tiene esas
+  medidas exactas para que al reemplazarlo no se mueva el layout.
 - `public/og-image.png`, 1200x630.
 - Los dos links de AUSA, notebook y dashboard, que siguen en `#`.
 - Pasar `og:image` a URL absoluta. Bloqueado: espera a que el proyecto quede
