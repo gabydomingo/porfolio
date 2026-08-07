@@ -57,8 +57,10 @@ src/
     stack.js
     certificaciones.js
     tecnologias.js         -> el mapa de nombre -> color de marca
+    textos.js              -> el texto de la interfaz en los dos idiomas
   hooks/
     useTheme.js
+    useIdioma.js
     useReveal.js
     useCounter.js
   index.css                -> tokens de tema, ya resuelto
@@ -74,10 +76,11 @@ grupos del stack, tecnologías con su color— vive en `src/data/` y no se
 hardcodea en los componentes. Sumar un proyecto tiene que ser tocar un solo
 archivo.
 
-Los textos que forman parte de la estructura de una sección y solo cambian si
-cambia el sitio —los enlaces del nav, los títulos de sección, el copy fijo del
-hero— pueden quedar en su propio componente. Si aparece un caso que no encaja
-claro en ninguna de las dos, se pregunta antes de decidir.
+Con el sitio en dos idiomas ya no queda texto suelto en los componentes: los
+enlaces del nav, los títulos de sección y el copy fijo del hero viven en
+`src/data/textos.js`, porque dejaron de ser estructura y pasaron a variar según
+el idioma. Si aparece un caso que no encaja claro, se pregunta antes de
+decidir.
 
 ## Qué se conserva del código actual
 
@@ -181,6 +184,43 @@ alto táctil. El total baja a 337px.
 El toggle queda en 44px de alto pero 32px de ancho: llevarlo a 44x44 suma 12px
 y empuja el nav a 349px, que rompe los 360px de un Galaxy S8 o un iPhone 12
 mini. Se prefirió el ancho de pantalla sobre el área táctil del toggle.
+
+**Idioma.** Cada texto lleva sus dos versiones juntas en el mismo campo,
+`{ es, en }`, en vez de archivos `es.js` y `en.js` paralelos: así una traducción
+que falta se ve en el renglón de al lado, y sumar un proyecto sigue siendo
+tocar un solo archivo. El helper `t(campo, idioma)` de `textos.js` tolera
+strings sueltos y cae en español, de modo que un campo a medio traducir se
+muestra igual en vez de romper o quedar vacío.
+
+Los nombres propios no se traducen y quedan como string: las inmobiliarias, los
+títulos de los trabajos de cursada y los certificados de IBM y AWS. Un chequeo
+que recorra los datos buscando strings sueltos debería encontrar esos once y
+nada más.
+
+Los párrafos con una negrita en el medio se parten en `antes` / `fuerte` /
+`después`, porque el `<strong>` no puede viajar dentro de un string. Son cuatro:
+el del hero y los tres de Sobre mí.
+
+`useIdioma` se llama una sola vez en `App` y el idioma baja como prop, igual que
+`isDark`. No hace falta un Context: `App` renderiza las nueve secciones
+directamente, sin anidamiento que atravesar. La clave es `gd-lang`, el default
+es español y no se mira `navigator.language`, por el mismo criterio con el que
+se ignora `prefers-color-scheme`: el público principal es Argentina y LATAM, y
+un visitante con el navegador en inglés igual entra en español. El `lang` de
+`<html>` se fija desde el script inline antes de pintar y lo mantiene
+sincronizado el `useEffect` del hook.
+
+En el nav, `Tecnologías` pasó a `Stack` para que entre el botón de idioma en
+360px sin volver a partirse en dos líneas. Es además la etiqueta que mejor
+describe la sección, que se llama "Stack técnico".
+
+**Limitación asumida: los meta tags quedan siempre en español.** LinkedIn,
+Twitter y WhatsApp no ejecutan JavaScript, así que leen el `index.html` estático
+y nunca ven la traducción. La tarjeta de compartido y el snippet de Google van a
+estar en español pase lo que pase. La única solución real es tener dos URLs,
+`/` y `/en`, con dos HTML y `hreflang` cruzado; se descartó porque reintroduce
+el ruteo que sacamos a propósito. Si alguna vez hay que buscar tráfico en
+inglés, ese es el camino y nada de lo hecho lo bloquea.
 
 **Etiquetas de tecnología.** `Tag.jsx` tiene tres variantes con nombre
 —`tarjeta`, `suave` y `mini`—, que son las tres combinaciones de tamaño y fondo
