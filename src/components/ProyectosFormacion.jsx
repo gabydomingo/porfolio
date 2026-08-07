@@ -2,6 +2,9 @@ import { useState } from 'react';
 import Tag from './Tag';
 import { formacion } from '../data/proyectos';
 
+const enlaceBase =
+  'boton inline-flex items-center rounded-full px-[11px] py-1 text-[11.5px] font-semibold transition-transform duration-200 hover:-translate-y-px';
+
 export default function ProyectosFormacion() {
   const [abierto, setAbierto] = useState(false);
 
@@ -58,6 +61,23 @@ export default function ProyectosFormacion() {
                   <span className="flex flex-wrap gap-[6px]">
                     {p.tags.map((t) => (
                       <Tag key={t} nombre={t} variante="mini" />
+                    ))}
+                  </span>
+                  <span className="flex flex-wrap gap-[6px]">
+                    {p.enlaces.map((e) => (
+                      <a
+                        key={e.texto}
+                        href={e.href}
+                        target="_blank"
+                        rel="noopener"
+                        className={`${enlaceBase} ${
+                          e.principal
+                            ? 'bg-vio text-white'
+                            : 'bg-tagbg shadow-soft'
+                        }`}
+                      >
+                        {e.texto}
+                      </a>
                     ))}
                   </span>
                 </div>

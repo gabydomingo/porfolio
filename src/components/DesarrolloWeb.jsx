@@ -1,6 +1,9 @@
 import Tag from './Tag';
 import { web } from '../data/proyectos';
 
+const enlaceBase =
+  'boton inline-flex items-center gap-[7px] rounded-xl px-[14px] py-2 text-[13px] font-semibold transition-transform duration-200 hover:-translate-y-px';
+
 export default function DesarrolloWeb() {
   return (
     <section className="mx-auto flex w-full max-w-[920px] flex-col gap-7">
@@ -47,6 +50,22 @@ export default function DesarrolloWeb() {
               <div className="mt-1 flex flex-wrap gap-[6px]">
                 {p.tags.map((t) => (
                   <Tag key={t} nombre={t} variante="suave" />
+                ))}
+              </div>
+
+              <div className="mt-2 flex flex-wrap gap-2">
+                {p.enlaces.map((e) => (
+                  <a
+                    key={e.texto}
+                    href={e.href}
+                    target="_blank"
+                    rel="noopener"
+                    className={`${enlaceBase} ${
+                      e.principal ? 'bg-vio text-white' : 'bg-tagbg shadow-soft'
+                    }`}
+                  >
+                    {e.texto}
+                  </a>
                 ))}
               </div>
             </div>

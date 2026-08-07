@@ -124,6 +124,13 @@ export const web = [
     imagen: '/proyectos/recalde.png',
     placeholder: 'Captura Recalde Inmobiliaria',
     tags: ['Next.js', 'TypeScript', 'Supabase', 'Vercel'],
+    enlaces: [
+      {
+        texto: 'Ver sitio',
+        href: 'https://recaldeinmobiliaria.com/',
+        principal: true,
+      },
+    ],
   },
   {
     id: 'minini',
@@ -133,6 +140,13 @@ export const web = [
     imagen: '/proyectos/minprop.png',
     placeholder: 'Captura Minini Propiedades',
     tags: ['Next.js', 'TypeScript', 'Supabase'],
+    enlaces: [
+      {
+        texto: 'Ver sitio',
+        href: 'https://propiedadesminini.com/',
+        principal: true,
+      },
+    ],
   },
   {
     id: 'giacchino',
@@ -141,6 +155,13 @@ export const web = [
     imagen: '/proyectos/giachiprop.png',
     placeholder: 'Captura Giacchino Propiedades',
     tags: ['Next.js', 'TypeScript', 'Supabase'],
+    enlaces: [
+      {
+        texto: 'Ver sitio',
+        href: 'https://www.giacchinopropiedades.com/',
+        principal: true,
+      },
+    ],
   },
   {
     id: 'ecommerce',
@@ -150,6 +171,10 @@ export const web = [
     imagen: '/proyectos/pczone-web-cap.png',
     placeholder: 'Captura ecommerce de hardware',
     tags: ['Next.js', 'Prisma', 'Supabase'],
+    // Sin sitio en producción: el único enlace es el código
+    enlaces: [
+      { texto: 'Código', href: 'https://github.com/pcZone-org/pczone-web' },
+    ],
   },
 ];
 
@@ -160,12 +185,29 @@ export const formacion = [
     descripcion:
       'App Android que visualiza constelaciones e historias usando la API de la NASA, con chat integrado.',
     tags: ['Kotlin', 'Android Studio'],
+    enlaces: [
+      {
+        texto: 'Código',
+        href: 'https://github.com/gabydomingo/constelaciones_de_recuerdo',
+      },
+    ],
   },
   {
     id: 'amigo-secreto',
     nombre: 'Challenge amigo secreto',
     descripcion: 'Sorteo de amigo invisible en JavaScript puro.',
     tags: ['HTML', 'CSS', 'JavaScript'],
+    enlaces: [
+      {
+        texto: 'Ver demo',
+        href: 'https://gabydomingo.github.io/ChallengeAmigoSecreto/',
+        principal: true,
+      },
+      {
+        texto: 'Código',
+        href: 'https://github.com/gabydomingo/ChallengeAmigoSecreto',
+      },
+    ],
   },
   {
     id: 'kumo',
@@ -173,5 +215,8 @@ export const formacion = [
     descripcion:
       'Sitio de restaurante con carga de productos, pedidos y ranking de usuarios.',
     tags: ['PHP', 'MySQL', 'jQuery'],
+    enlaces: [
+      { texto: 'Código', href: 'https://github.com/gabydomingo/kumoRamen' },
+    ],
   },
 ];
