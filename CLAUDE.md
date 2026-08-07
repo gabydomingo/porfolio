@@ -307,7 +307,6 @@ no hay scroll horizontal ni elementos que se pasen del viewport.
   telemetría de F1 y la del detector de anomalías oceánicas.
 - La foto para Sobre mí, 260x300 con radio 16. El placeholder ya tiene esas
   medidas exactas para que al reemplazarlo no se mueva el layout.
-- `public/og-image.png`, 1200x630.
 - Los dos links de AUSA, notebook y dashboard, que siguen en `#`.
 
 Ya resueltos: el CV en `public/DomingoGabrielCV.pdf`, la captura de AUSA y las
