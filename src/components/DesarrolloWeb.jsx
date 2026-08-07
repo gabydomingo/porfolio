@@ -18,7 +18,9 @@ export default function DesarrolloWeb() {
         </p>
       </div>
 
-      <div className="grid grid-cols-[repeat(auto-fit,minmax(280px,1fr))] gap-[22px]">
+      {/* Apiladas, 22px dejaban la captura de una tarjeta demasiado cerca del
+          pie de la anterior y parecía pertenecerle */}
+      <div className="grid grid-cols-[repeat(auto-fit,minmax(280px,1fr))] gap-10 sm:gap-[22px]">
         {web.map((p) => (
           <article
             key={p.id}
