@@ -3,7 +3,7 @@ export const destacados = [
   {
     id: 'f1',
     titulo: 'Plataforma de estrategia y telemetría de Fórmula 1',
-    imagen: null,
+    imagen: 'public/proyectos/f1.png',
     placeholder: 'Captura del dashboard de telemetría F1',
     altoMin: 320,
     problema:
@@ -46,7 +46,7 @@ export const destacados = [
   {
     id: 'oceano',
     titulo: 'Detección de anomalías oceánicas en la costa de Mar del Plata',
-    imagen: null,
+    imagen: 'public/proyectos/anomalias.png',
     placeholder: 'Captura del detector de anomalías oceánicas',
     altoMin: 320,
     problema:
@@ -121,7 +121,7 @@ export const web = [
     nombre: 'Recalde Inmobiliaria',
     descripcion:
       'Sitio para una inmobiliaria de la costa atlántica, en producción.',
-    imagen: '/proyectos/recalde.png',
+    imagen: 'public/proyectos/recald.png',
     placeholder: 'Captura Recalde Inmobiliaria',
     tags: ['Next.js', 'TypeScript', 'Supabase', 'Vercel'],
     enlaces: [

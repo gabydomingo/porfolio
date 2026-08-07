@@ -6,15 +6,15 @@ export const certificaciones = [
     bg: '#EDE8FE',
     fg: '#7C5CF0',
     nombre: 'Tecnicatura en Desarrollo de Software',
-    organizacion: 'UADE · finalización prevista 2026',
+    organizacion: 'UADE · +50% de la carrera aprobada',
   },
   {
     id: 'google',
     sigla: 'G',
     bg: '#E8F0FE',
     fg: '#4285F4',
-    nombre: 'Google Advanced Data Analytics Professional Certificate',
-    organizacion: 'Google',
+    nombre: 'Google Advanced Data Analytics Professional Certificate (En Curso)',
+    organizacion: 'Google + Coursera',
   },
   {
     id: 'ibm',
@@ -30,6 +30,6 @@ export const certificaciones = [
     bg: '#FDF0E0',
     fg: '#C77A1F',
     nombre: 'AWS Cloud Fundamentals',
-    organizacion: 'AWS',
+    organizacion: 'Codigo Facilito',
   },
 ];

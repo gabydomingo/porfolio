@@ -13,10 +13,10 @@ export default function Contacto() {
         Hablemos
       </h2>
 
-      <p className="reveal m-0 max-w-[480px] text-[16.5px] leading-[1.65] text-sec [text-wrap:pretty]">
-        Estoy buscando mi primer puesto en datos. Si tenés una búsqueda abierta
-        o simplemente querés comentar algo de los proyectos, escribime.
-      </p>
+      <p>
+  ¿Tenés un desafío por delante? Ya sea para una oportunidad laboral o
+   para explorar cómo sumar valor a tu idea, hablemos.
+</p>
 
       <div className="reveal flex flex-wrap justify-center gap-3">
         <a
