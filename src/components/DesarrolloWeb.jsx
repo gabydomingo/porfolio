@@ -1,20 +1,19 @@
 import Tag from './Tag';
 import { web } from '../data/proyectos';
+import { t, textos } from '../data/textos';
 
 const enlaceBase =
   'boton inline-flex items-center gap-[7px] rounded-xl px-[14px] py-2 text-[13px] font-semibold transition-transform duration-200 hover:-translate-y-px';
 
-export default function DesarrolloWeb() {
+export default function DesarrolloWeb({ idioma }) {
   return (
     <section className="mx-auto flex w-full max-w-[920px] flex-col gap-7">
       <div className="reveal flex flex-col gap-3">
         <h2 className="font-display m-0 text-[clamp(24px,3.2vw,30px)] font-bold tracking-[-0.02em]">
-          Desarrollo web
+          {t(textos.secciones.web, idioma)}
         </h2>
         <p className="m-0 max-w-[640px] text-[16px] leading-[1.65] text-sec [text-wrap:pretty]">
-          Antes de dedicarme a los datos trabajé como desarrollador full stack.
-          Estos proyectos son la razón por la que puedo llevar un modelo desde
-          el notebook hasta un sitio funcionando.
+          {t(textos.web.intro, idioma)}
         </p>
       </div>
 
@@ -31,12 +30,12 @@ export default function DesarrolloWeb() {
                 {p.imagen ? (
                   <img
                     src={p.imagen}
-                    alt={p.nombre}
+                    alt={t(p.nombre, idioma)}
                     className="h-full w-full object-cover object-top"
                   />
                 ) : (
                   <div className="flex h-full w-full items-center justify-center bg-[#e4e4e7] px-4 text-center text-[13px] text-[#52525b] dark:bg-[#2a2733] dark:text-[#9b95ad]">
-                    {p.placeholder}
+                    {t(p.placeholder, idioma)}
                   </div>
                 )}
               </div>
@@ -44,21 +43,21 @@ export default function DesarrolloWeb() {
 
             <div className="flex flex-col gap-[9px] px-5 pt-[18px] pb-5">
               <h3 className="font-display m-0 text-[17px] font-bold tracking-[-0.01em]">
-                {p.nombre}
+                {t(p.nombre, idioma)}
               </h3>
               <p className="m-0 text-[14px] leading-[1.55] text-sec">
-                {p.descripcion}
+                {t(p.descripcion, idioma)}
               </p>
               <div className="mt-1 flex flex-wrap gap-[6px]">
-                {p.tags.map((t) => (
-                  <Tag key={t} nombre={t} variante="suave" />
+                {p.tags.map((tec) => (
+                  <Tag key={tec} nombre={tec} variante="suave" />
                 ))}
               </div>
 
               <div className="mt-2 flex flex-wrap gap-2">
                 {p.enlaces.map((e) => (
                   <a
-                    key={e.texto}
+                    key={e.href}
                     href={e.href}
                     target="_blank"
                     rel="noopener"
@@ -66,7 +65,7 @@ export default function DesarrolloWeb() {
                       e.principal ? 'bg-vio text-white' : 'bg-tagbg shadow-soft'
                     }`}
                   >
-                    {e.texto}
+                    {t(e.texto, idioma)}
                   </a>
                 ))}
               </div>

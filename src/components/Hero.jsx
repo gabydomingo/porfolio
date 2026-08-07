@@ -3,10 +3,10 @@ import useCounter from '../hooks/useCounter';
 import { t, textos } from '../data/textos';
 
 const metricas = [
-  { valor: 43, sufijo: 'M', etiqueta: 'registros procesados' },
-  { valor: 4, sufijo: '', etiqueta: 'modelos entrenados' },
-  { valor: 3, sufijo: '', etiqueta: 'apps en producción' },
-  { valor: 2, sufijo: '', etiqueta: 'dashboards de BI' },
+  { valor: 43, sufijo: 'M', etiqueta: textos.metricas.registros },
+  { valor: 4, sufijo: '', etiqueta: textos.metricas.modelos },
+  { valor: 3, sufijo: '', etiqueta: textos.metricas.apps },
+  { valor: 2, sufijo: '', etiqueta: textos.metricas.dashboards },
 ];
 
 // A nivel de módulo para que useCounter reciba siempre el mismo array
@@ -28,20 +28,19 @@ export default function Hero({ isDark, idioma }) {
           className="inline-flex self-start items-center gap-[9px] rounded-full bg-surf px-[15px] py-2 text-[13.5px] font-medium shadow-soft"
         >
           <span className="pulse-dot h-[9px] w-[9px] rounded-full bg-green" />
-          Disponible para trabajar
+          {t(textos.hero.badge, idioma)}
         </a>
 
         <h1 className="font-display m-0 text-[clamp(38px,6.5vw,58px)] leading-[1.05] font-extrabold tracking-[-0.03em]">
-          Hola, soy Gabriel
+          {t(textos.hero.titulo, idioma)}
         </h1>
 
         <p className="m-0 max-w-[640px] text-[clamp(17px,2.4vw,20px)] leading-[1.65] text-sec [text-wrap:pretty]">
-          Analista de datos y desarrollador de Buenos Aires.{' '}
+          {t(textos.hero.intro.antes, idioma)}
           <strong className="text-txt">
-            Construyo pipelines de datos de punta a punta
+            {t(textos.hero.intro.fuerte, idioma)}
           </strong>
-          : extraigo, proceso, modelo y dejo el resultado funcionando en la
-          nube.
+          {t(textos.hero.intro.despues, idioma)}
         </p>
 
         <div className="flex flex-wrap gap-3">
@@ -49,7 +48,7 @@ export default function Hero({ isDark, idioma }) {
             href="#proyectos"
             className="boton inline-flex items-center gap-2 rounded-xl bg-vio px-[22px] py-3 text-[15px] font-semibold text-white transition-[transform,box-shadow] duration-200 hover:-translate-y-0.5 hover:shadow-[0_8px_24px_rgb(124_92_240/0.4)]"
           >
-            Ver proyectos
+            {t(textos.hero.verProyectos, idioma)}
           </a>
           <a href={t(textos.cv, idioma)} download className={botonSecundario}>
             <svg
@@ -64,7 +63,7 @@ export default function Hero({ isDark, idioma }) {
             >
               <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3" />
             </svg>
-            Descargar CV
+            {t(textos.hero.descargarCv, idioma)}
           </a>
           <a
             href="https://linkedin.com/in/gabydomingo"
@@ -95,12 +94,14 @@ export default function Hero({ isDark, idioma }) {
           className="mt-[14px] flex flex-wrap gap-x-[44px] gap-y-[14px]"
         >
           {metricas.map((m, i) => (
-            <div key={m.etiqueta} className="flex flex-col gap-[2px]">
+            <div key={m.etiqueta.es} className="flex flex-col gap-[2px]">
               <span className="font-mono text-[34px] font-semibold tracking-[-0.02em]">
                 {valores[i]}
                 {m.sufijo}
               </span>
-              <span className="text-[13px] text-sec">{m.etiqueta}</span>
+              <span className="text-[13px] text-sec">
+                {t(m.etiqueta, idioma)}
+              </span>
             </div>
           ))}
         </div>

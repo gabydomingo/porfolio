@@ -2,7 +2,7 @@
 export const grupos = [
   {
     id: 'analisis',
-    titulo: 'Análisis y machine learning',
+    titulo: { es: 'Análisis y machine learning', en: 'Analysis and machine learning' },
     tags: [
       'Python',
       'pandas',
@@ -17,7 +17,7 @@ export const grupos = [
   },
   {
     id: 'datos',
-    titulo: 'Ingeniería de datos',
+    titulo: { es: 'Ingeniería de datos', en: 'Data engineering' },
     tags: [
       'SQL',
       'PostgreSQL',
@@ -32,7 +32,7 @@ export const grupos = [
   },
   {
     id: 'bi',
-    titulo: 'Visualización y BI',
+    titulo: { es: 'Visualización y BI', en: 'Visualization and BI' },
     tags: [
       'Power BI',
       'Looker Studio',
@@ -46,7 +46,7 @@ export const grupos = [
   },
   {
     id: 'desarrollo',
-    titulo: 'Desarrollo y cloud',
+    titulo: { es: 'Desarrollo y cloud', en: 'Development and cloud' },
     tags: [
       'Next.js',
       'React',

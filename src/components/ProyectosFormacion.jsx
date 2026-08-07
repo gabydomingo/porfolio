@@ -1,11 +1,12 @@
 import { useState } from 'react';
 import Tag from './Tag';
 import { formacion } from '../data/proyectos';
+import { t, textos } from '../data/textos';
 
 const enlaceBase =
   'boton inline-flex items-center rounded-full px-[11px] py-1 text-[11.5px] font-semibold transition-transform duration-200 hover:-translate-y-px';
 
-export default function ProyectosFormacion() {
+export default function ProyectosFormacion({ idioma }) {
   const [abierto, setAbierto] = useState(false);
 
   return (
@@ -19,11 +20,10 @@ export default function ProyectosFormacion() {
         >
           <span>
             <span className="font-display text-[17px] font-bold tracking-[-0.01em]">
-              Proyectos de formación
+              {t(textos.secciones.formacion, idioma)}
             </span>
             <span className="text-[14.5px] text-sec">
-              {' '}
-              — Ejercicios y trabajos de cursada.
+              {t(textos.formacion.detalle, idioma)}
             </span>
           </span>
           <svg
@@ -53,20 +53,20 @@ export default function ProyectosFormacion() {
                   className="flex flex-wrap items-baseline gap-x-3 gap-y-2"
                 >
                   <span className="text-[14.5px] font-semibold">
-                    {p.nombre}
+                    {t(p.nombre, idioma)}
                   </span>
                   <span className="flex-[1_1_260px] text-[14px] text-sec">
-                    {p.descripcion}
+                    {t(p.descripcion, idioma)}
                   </span>
                   <span className="flex flex-wrap gap-[6px]">
-                    {p.tags.map((t) => (
-                      <Tag key={t} nombre={t} variante="mini" />
+                    {p.tags.map((tec) => (
+                      <Tag key={tec} nombre={tec} variante="mini" />
                     ))}
                   </span>
                   <span className="flex flex-wrap gap-[6px]">
                     {p.enlaces.map((e) => (
                       <a
-                        key={e.texto}
+                        key={e.href}
                         href={e.href}
                         target="_blank"
                         rel="noopener"
@@ -76,7 +76,7 @@ export default function ProyectosFormacion() {
                             : 'bg-tagbg shadow-soft'
                         }`}
                       >
-                        {e.texto}
+                        {t(e.texto, idioma)}
                       </a>
                     ))}
                   </span>

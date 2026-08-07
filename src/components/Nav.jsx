@@ -1,8 +1,10 @@
+import { t, textos } from '../data/textos';
+
 const enlaces = [
-  { href: '#proyectos', texto: 'Proyectos' },
-  { href: '#tecnologias', texto: 'Stack' },
-  { href: '#sobre-mi', texto: 'Sobre mí' },
-  { href: '#contacto', texto: 'Contacto' },
+  { href: '#proyectos', texto: textos.nav.proyectos },
+  { href: '#tecnologias', texto: textos.nav.stack },
+  { href: '#sobre-mi', texto: textos.nav.sobreMi },
+  { href: '#contacto', texto: textos.nav.contacto },
 ];
 
 export default function Nav({ isDark, toggleTheme, idioma, alternarIdioma }) {
@@ -14,13 +16,13 @@ export default function Nav({ isDark, toggleTheme, idioma, alternarIdioma }) {
           href={e.href}
           className="shrink-0 rounded-full px-1.5 py-3 text-[13px] font-medium whitespace-nowrap hover:bg-viosoft sm:px-[11px] sm:py-[7px] sm:text-[13.5px]"
         >
-          {e.texto}
+          {t(e.texto, idioma)}
         </a>
       ))}
       <button
         type="button"
         onClick={toggleTheme}
-        aria-label="Cambiar tema"
+        aria-label={t(textos.nav.cambiarTema, idioma)}
         className="flex h-11 w-8 shrink-0 cursor-pointer items-center justify-center rounded-full bg-transparent text-txt hover:bg-viosoft sm:h-8"
       >
         {isDark ? (

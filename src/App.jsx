@@ -26,13 +26,13 @@ export default function App() {
       />
       <Hero isDark={isDark} idioma={idioma} />
       <main className="flex flex-col gap-[110px] px-6 pt-10 pb-[90px]">
-        <ProyectosDestacados />
-        <DesarrolloWeb />
-        <ProyectosFormacion />
-        <StackTecnico />
-        <SobreMi />
-        <Certificaciones />
-        <Contacto />
+        <ProyectosDestacados idioma={idioma} />
+        <DesarrolloWeb idioma={idioma} />
+        <ProyectosFormacion idioma={idioma} />
+        <StackTecnico idioma={idioma} />
+        <SobreMi idioma={idioma} />
+        <Certificaciones idioma={idioma} />
+        <Contacto idioma={idioma} />
       </main>
       <footer className="px-6 py-7 text-center text-[13px] text-sec">
         © 2026 Gabriel Domingo

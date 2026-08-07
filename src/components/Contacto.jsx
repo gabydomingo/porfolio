@@ -1,22 +1,21 @@
+import { t, textos } from '../data/textos';
+
 const EMAIL = 'domingogaby8@gmail.com';
 
 const enlaceSecundario =
   'boton inline-flex items-center gap-2 rounded-xl bg-surf px-[22px] py-[14px] text-[15px] font-semibold shadow-soft transition-transform duration-200 hover:-translate-y-0.5';
 
-export default function Contacto() {
+export default function Contacto({ idioma }) {
   return (
     <section
       id="contacto"
       className="mx-auto flex w-full max-w-[640px] scroll-mt-[90px] flex-col items-center gap-5 text-center"
     >
       <h2 className="reveal font-display m-0 text-[clamp(30px,4.5vw,42px)] font-extrabold tracking-[-0.025em]">
-        Hablemos
+        {t(textos.secciones.contacto, idioma)}
       </h2>
 
-      <p>
-  ¿Tenés un desafío por delante? Ya sea para una oportunidad laboral o
-   para explorar cómo sumar valor a tu idea, hablemos.
-</p>
+      <p>{t(textos.contacto.intro, idioma)}</p>
 
       <div className="reveal flex flex-wrap justify-center gap-3">
         <a
@@ -65,7 +64,7 @@ export default function Contacto() {
       </div>
 
       <span className="reveal text-[13.5px] text-sec">
-        Buenos Aires, Argentina
+        {t(textos.contacto.ubicacion, idioma)}
       </span>
     </section>
   );

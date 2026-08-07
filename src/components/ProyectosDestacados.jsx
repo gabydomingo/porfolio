@@ -1,5 +1,6 @@
 import Tag from './Tag';
 import { destacados } from '../data/proyectos';
+import { t, textos } from '../data/textos';
 
 const enlaceBase =
   'boton inline-flex items-center gap-[7px] rounded-xl px-4 py-[9px] text-[13.5px] font-semibold transition-transform duration-200 hover:-translate-y-px';
@@ -12,20 +13,20 @@ function Bloque({ titulo, children }) {
   );
 }
 
-export default function ProyectosDestacados() {
+export default function ProyectosDestacados({ idioma }) {
   return (
     <section
       id="proyectos"
       className="mx-auto flex w-full max-w-[1120px] scroll-mt-[90px] flex-col gap-16"
     >
       <h2 className="reveal font-display m-0 text-[clamp(28px,4vw,40px)] font-extrabold tracking-[-0.025em]">
-        Proyectos destacados
+        {t(textos.secciones.destacados, idioma)}
       </h2>
 
       {destacados.map((p, i) => (
         <article key={p.id} className="reveal pcard flex flex-col gap-6">
           <h3 className="font-display m-0 text-2xl leading-[1.2] font-bold tracking-[-0.02em]">
-            {p.titulo}
+            {t(p.titulo, idioma)}
           </h3>
 
           <div className="relative aspect-[2/1] overflow-hidden rounded-2xl shadow-card">
@@ -33,12 +34,12 @@ export default function ProyectosDestacados() {
               {p.imagen ? (
                 <img
                   src={p.imagen}
-                  alt={p.titulo}
+                  alt={t(p.titulo, idioma)}
                   className="h-full w-full object-cover object-top"
                 />
               ) : (
                 <div className="flex h-full w-full items-center justify-center bg-[#e4e4e7] px-6 text-center text-[13px] text-[#52525b] dark:bg-[#2a2733] dark:text-[#9b95ad]">
-                  {p.placeholder}
+                  {t(p.placeholder, idioma)}
                 </div>
               )}
             </div>
@@ -50,26 +51,32 @@ export default function ProyectosDestacados() {
             <div
               className={`flex flex-col gap-4 ${i % 2 === 1 ? 'lg:order-2' : ''}`}
             >
-              <Bloque titulo="El problema.">{p.problema}</Bloque>
-              <Bloque titulo="Los datos.">{p.datos}</Bloque>
+              <Bloque titulo={t(textos.bloques.problema, idioma)}>
+                {t(p.problema, idioma)}
+              </Bloque>
+              <Bloque titulo={t(textos.bloques.datos, idioma)}>
+                {t(p.datos, idioma)}
+              </Bloque>
             </div>
 
             <div className="flex flex-col gap-4">
-              <Bloque titulo="Cómo lo resolví.">{p.solucion}</Bloque>
+              <Bloque titulo={t(textos.bloques.solucion, idioma)}>
+                {t(p.solucion, idioma)}
+              </Bloque>
               <div className="rounded-2xl bg-surf px-5 py-[18px] shadow-soft">
                 <div className="font-mono text-[clamp(17px,2.4vw,21px)] font-semibold tracking-[-0.01em] text-green">
-                  {p.resultado.titular}
+                  {t(p.resultado.titular, idioma)}
                 </div>
                 <p className="mt-[10px] mb-0 text-[14px] leading-[1.6] text-sec">
-                  {p.resultado.detalle}
+                  {t(p.resultado.detalle, idioma)}
                 </p>
               </div>
             </div>
           </div>
 
           <div className="flex flex-wrap gap-[7px]">
-            {p.tags.map((t) => (
-              <Tag key={t} nombre={t} />
+            {p.tags.map((tec) => (
+              <Tag key={tec} nombre={tec} />
             ))}
           </div>
 
@@ -78,7 +85,7 @@ export default function ProyectosDestacados() {
               const externo = e.href.startsWith('http');
               return (
                 <a
-                  key={e.texto}
+                  key={e.href}
                   href={e.href}
                   target={externo ? '_blank' : undefined}
                   rel={externo ? 'noopener' : undefined}
@@ -86,7 +93,7 @@ export default function ProyectosDestacados() {
                     e.principal ? 'bg-vio text-white' : 'bg-surf shadow-soft'
                   }`}
                 >
-                  {e.texto}
+                  {t(e.texto, idioma)}
                 </a>
               );
             })}

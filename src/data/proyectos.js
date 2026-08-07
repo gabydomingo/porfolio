@@ -4,7 +4,10 @@ export const destacados = [
     id: 'f1',
     titulo: 'Plataforma de estrategia y telemetría de Fórmula 1',
     imagen: '/proyectos/f1.png',
-    placeholder: 'Captura del dashboard de telemetría F1',
+    placeholder: {
+      es: 'Captura del dashboard de telemetría F1',
+      en: 'F1 telemetry dashboard screenshot',
+    },
     problema:
       'Decidir en qué vuelta parar a cambiar neumáticos es la decisión de mayor impacto de una carrera, y depende de estimar cuánto se está degradando el compuesto en tiempo real.',
     datos:
@@ -31,22 +34,25 @@ export const destacados = [
     ],
     enlaces: [
       {
-        texto: 'Ver dashboard',
+        texto: { es: 'Ver dashboard', en: 'View dashboard' },
         href: 'https://f1-data-two.vercel.app/',
         principal: true,
       },
       {
-        texto: 'Ver BI en Looker Studio',
+        texto: { es: 'Ver BI en Looker Studio', en: 'View BI in Looker Studio' },
         href: 'https://datastudio.google.com/reporting/08593df1-5291-419c-847a-ce256097384e',
       },
-      { texto: 'Código', href: 'https://github.com/gabydomingo/f1-data' },
+      { texto: { es: 'Código', en: 'Code' }, href: 'https://github.com/gabydomingo/f1-data' },
     ],
   },
   {
     id: 'oceano',
     titulo: 'Detección de anomalías oceánicas en la costa de Mar del Plata',
     imagen: '/proyectos/anomalias.png',
-    placeholder: 'Captura del detector de anomalías oceánicas',
+    placeholder: {
+      es: 'Captura del detector de anomalías oceánicas',
+      en: 'Ocean anomaly detector screenshot',
+    },
     problema:
       'Las olas de calor marinas afectan directamente a la pesca y al turismo de la costa bonaerense, pero no existe una herramienta accesible que las detecte y las muestre.',
     datos:
@@ -72,12 +78,12 @@ export const destacados = [
     ],
     enlaces: [
       {
-        texto: 'Probar el detector',
+        texto: { es: 'Probar el detector', en: 'Try the detector' },
         href: 'https://anomalias-oceanicas-phi.vercel.app/',
         principal: true,
       },
       {
-        texto: 'Código',
+        texto: { es: 'Código', en: 'Code' },
         href: 'https://github.com/gabydomingo/anomalias-oceanicas',
       },
     ],
@@ -86,7 +92,10 @@ export const destacados = [
     id: 'ausa',
     titulo: 'Análisis de siniestros viales en autopistas de AUSA',
     imagen: '/proyectos/ausa.png',
-    placeholder: 'Captura del tablero de siniestros AUSA',
+    placeholder: {
+      es: 'Captura del tablero de siniestros AUSA',
+      en: 'AUSA road-accident dashboard screenshot',
+    },
     problema:
       'Anticipar qué siniestros van a ser graves permite dimensionar mejor la respuesta de emergencia.',
     datos:
@@ -107,11 +116,11 @@ export const destacados = [
     ],
     enlaces: [
       {
-        texto: 'Ver notebook',
+        texto: { es: 'Ver notebook', en: 'View notebook' },
         href: 'https://colab.research.google.com/drive/1Akj3H08Wwt4TvxYoQcmotAAHq2Ry4_iY?usp=sharing',
       },
       {
-        texto: 'Ver dashboard',
+        texto: { es: 'Ver dashboard', en: 'View dashboard' },
         href: 'https://datastudio.google.com/reporting/a67177eb-c4c4-4320-b3bd-4169fba868a2',
       },
     ],
@@ -122,14 +131,19 @@ export const web = [
   {
     id: 'recalde',
     nombre: 'Recalde Inmobiliaria',
-    descripcion:
-      'Sitio para una inmobiliaria de la costa atlántica, en producción.',
+    descripcion: {
+      es: 'Sitio para una inmobiliaria de la costa atlántica, en producción.',
+      en: 'Site for a real estate agency on the Atlantic coast, live in production.',
+    },
     imagen: '/proyectos/recald.png',
-    placeholder: 'Captura Recalde Inmobiliaria',
+    placeholder: {
+      es: 'Captura Recalde Inmobiliaria',
+      en: 'Recalde Inmobiliaria screenshot',
+    },
     tags: ['Next.js', 'TypeScript', 'Supabase', 'Vercel'],
     enlaces: [
       {
-        texto: 'Ver sitio',
+        texto: { es: 'Ver sitio', en: 'Visit site' },
         href: 'https://recaldeinmobiliaria.com/',
         principal: true,
       },
@@ -138,14 +152,19 @@ export const web = [
   {
     id: 'minini',
     nombre: 'Minini Propiedades',
-    descripcion:
-      'Migración completa de un sitio en WordPress a un desarrollo propio, con buscador avanzado, mapas interactivos y panel de administración.',
+    descripcion: {
+      es: 'Migración completa de un sitio en WordPress a un desarrollo propio, con buscador avanzado, mapas interactivos y panel de administración.',
+      en: 'Full migration from WordPress to a custom build, with advanced search, interactive maps and an admin panel.',
+    },
     imagen: '/proyectos/minprop.png',
-    placeholder: 'Captura Minini Propiedades',
+    placeholder: {
+      es: 'Captura Minini Propiedades',
+      en: 'Minini Propiedades screenshot',
+    },
     tags: ['Next.js', 'TypeScript', 'Supabase'],
     enlaces: [
       {
-        texto: 'Ver sitio',
+        texto: { es: 'Ver sitio', en: 'Visit site' },
         href: 'https://propiedadesminini.com/',
         principal: true,
       },
@@ -154,13 +173,19 @@ export const web = [
   {
     id: 'giacchino',
     nombre: 'Giacchino Propiedades',
-    descripcion: 'Desarrollo web integral para una agencia independiente.',
+    descripcion: {
+      es: 'Desarrollo web integral para una agencia independiente.',
+      en: 'End-to-end web development for an independent agency.',
+    },
     imagen: '/proyectos/giachiprop.png',
-    placeholder: 'Captura Giacchino Propiedades',
+    placeholder: {
+      es: 'Captura Giacchino Propiedades',
+      en: 'Giacchino Propiedades screenshot',
+    },
     tags: ['Next.js', 'TypeScript', 'Supabase'],
     enlaces: [
       {
-        texto: 'Ver sitio',
+        texto: { es: 'Ver sitio', en: 'Visit site' },
         href: 'https://www.giacchinopropiedades.com/',
         principal: true,
       },
@@ -168,15 +193,20 @@ export const web = [
   },
   {
     id: 'ecommerce',
-    nombre: 'Ecommerce de hardware',
-    descripcion:
-      'Tienda con comparador de componentes, mapa de stock por sucursal y visor 3D. Modelo didáctico.',
+    nombre: { es: 'Ecommerce de hardware', en: 'Hardware ecommerce' },
+    descripcion: {
+      es: 'Tienda con comparador de componentes, mapa de stock por sucursal y visor 3D. Modelo didáctico.',
+      en: 'Store with a component comparator, stock map by branch and a 3D viewer. Learning project.',
+    },
     imagen: '/proyectos/pczone-web-cap.png',
-    placeholder: 'Captura ecommerce de hardware',
+    placeholder: {
+      es: 'Captura ecommerce de hardware',
+      en: 'Hardware ecommerce screenshot',
+    },
     tags: ['Next.js', 'Prisma', 'Supabase'],
     // Sin sitio en producción: el único enlace es el código
     enlaces: [
-      { texto: 'Código', href: 'https://github.com/pcZone-org/pczone-web' },
+      { texto: { es: 'Código', en: 'Code' }, href: 'https://github.com/pcZone-org/pczone-web' },
     ],
   },
 ];
@@ -185,12 +215,14 @@ export const formacion = [
   {
     id: 'constelaciones',
     nombre: 'Constelaciones de recuerdo',
-    descripcion:
-      'App Android que visualiza constelaciones e historias usando la API de la NASA, con chat integrado.',
+    descripcion: {
+      es: 'App Android que visualiza constelaciones e historias usando la API de la NASA, con chat integrado.',
+      en: 'Android app that visualizes constellations and their stories using NASA\'s API, with built-in chat.',
+    },
     tags: ['Kotlin', 'Android Studio'],
     enlaces: [
       {
-        texto: 'Código',
+        texto: { es: 'Código', en: 'Code' },
         href: 'https://github.com/gabydomingo/constelaciones_de_recuerdo',
       },
     ],
@@ -198,16 +230,19 @@ export const formacion = [
   {
     id: 'amigo-secreto',
     nombre: 'Challenge amigo secreto',
-    descripcion: 'Sorteo de amigo invisible en JavaScript puro.',
+    descripcion: {
+      es: 'Sorteo de amigo invisible en JavaScript puro.',
+      en: 'Secret Santa draw in vanilla JavaScript.',
+    },
     tags: ['HTML', 'CSS', 'JavaScript'],
     enlaces: [
       {
-        texto: 'Ver demo',
+        texto: { es: 'Ver demo', en: 'View demo' },
         href: 'https://gabydomingo.github.io/ChallengeAmigoSecreto/',
         principal: true,
       },
       {
-        texto: 'Código',
+        texto: { es: 'Código', en: 'Code' },
         href: 'https://github.com/gabydomingo/ChallengeAmigoSecreto',
       },
     ],
@@ -215,11 +250,13 @@ export const formacion = [
   {
     id: 'kumo',
     nombre: 'Kumo Ramen',
-    descripcion:
-      'Sitio de restaurante con carga de productos, pedidos y ranking de usuarios.',
+    descripcion: {
+      es: 'Sitio de restaurante con carga de productos, pedidos y ranking de usuarios.',
+      en: 'Restaurant site with product management, orders and a user ranking.',
+    },
     tags: ['PHP', 'MySQL', 'jQuery'],
     enlaces: [
-      { texto: 'Código', href: 'https://github.com/gabydomingo/kumoRamen' },
+      { texto: { es: 'Código', en: 'Code' }, href: 'https://github.com/gabydomingo/kumoRamen' },
     ],
   },
 ];

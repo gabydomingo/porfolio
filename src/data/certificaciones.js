@@ -5,15 +5,21 @@ export const certificaciones = [
     sigla: 'UADE',
     bg: '#EDE8FE',
     fg: '#7C5CF0',
-    nombre: 'Tecnicatura en Desarrollo de Software',
-    organizacion: 'UADE · +75% completada',
+    nombre: {
+      es: 'Tecnicatura en Desarrollo de Software',
+      en: 'Software Development Degree',
+    },
+    organizacion: { es: 'UADE · +75% completada', en: 'UADE · 75%+ completed' },
   },
   {
     id: 'google',
     sigla: 'G',
     bg: '#E8F0FE',
     fg: '#4285F4',
-    nombre: 'Google Advanced Data Analytics Professional Certificate (En Curso)',
+    nombre: {
+      es: 'Google Advanced Data Analytics Professional Certificate (En curso)',
+      en: 'Google Advanced Data Analytics Professional Certificate (In progress)',
+    },
     organizacion: 'Google + Coursera',
   },
   {

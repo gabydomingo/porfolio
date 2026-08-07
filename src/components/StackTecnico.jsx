@@ -1,5 +1,6 @@
 import Tag from './Tag';
 import { grupos } from '../data/stack';
+import { t, textos } from '../data/textos';
 
 const iconos = {
   analisis: (
@@ -25,14 +26,14 @@ const iconos = {
   desarrollo: <path d="M16 18l6-6-6-6M8 6l-6 6 6 6" />,
 };
 
-export default function StackTecnico() {
+export default function StackTecnico({ idioma }) {
   return (
     <section
       id="tecnologias"
       className="mx-auto flex w-full max-w-[920px] scroll-mt-[90px] flex-col gap-[26px]"
     >
       <h2 className="reveal font-display m-0 text-[clamp(24px,3.2vw,30px)] font-bold tracking-[-0.02em]">
-        Stack técnico
+        {t(textos.secciones.stack, idioma)}
       </h2>
 
       <div className="grid grid-cols-[repeat(auto-fit,minmax(300px,1fr))] gap-[22px]">
@@ -57,13 +58,13 @@ export default function StackTecnico() {
                 </svg>
               </span>
               <h3 className="font-display m-0 text-[16px] font-bold tracking-[-0.01em]">
-                {g.titulo}
+                {t(g.titulo, idioma)}
               </h3>
             </div>
 
             <div className="flex flex-wrap gap-[7px]">
-              {g.tags.map((t) => (
-                <Tag key={t} nombre={t} />
+              {g.tags.map((tec) => (
+                <Tag key={tec} nombre={tec} />
               ))}
             </div>
           </div>
