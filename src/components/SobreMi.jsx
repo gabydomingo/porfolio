@@ -25,6 +25,17 @@ export default function SobreMi() {
             después para que el resultado le llegue a alguien.
           </p>
           <p className="m-0 text-[16px] leading-[1.7] text-sec [text-wrap:pretty]">
+            Antes de dedicarme a la programación estuve a cargo de un edificio
+            de 24 departamentos: reservas, cobros, mantenimiento y un equipo a
+            mi cargo, haciendo de puente entre los empleados y el dueño. Llevaba
+            la ocupación en Excel y ahí empecé a ver que{' '}
+            <strong className="text-txt">
+              un número sirve para decidir algo, no solo para quedar registrado
+            </strong>
+            . De esa etapa me quedó saber traducir entre el que opera y el que
+            decide, que en datos es la mitad del trabajo.
+          </p>
+          <p className="m-0 text-[16px] leading-[1.7] text-sec [text-wrap:pretty]">
             Busco mi primer puesto en un equipo de datos. Me interesan{' '}
             <strong className="text-txt">
               los problemas donde el dato tiene consecuencias concretas
