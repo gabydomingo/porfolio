@@ -111,8 +111,15 @@ si corresponde. Al ser un script clásico y sincrónico corre antes de que el
 navegador pinte el `<div id="root">`, así que el modo oscuro no parpadea. El
 hook `useTheme` lee la misma clave en la función lazy de `useState` —no en un
 `useEffect`, que agregaría una pintura de más— y su `useEffect` solo sincroniza
-la clase en `<html>` y persiste el cambio. El default es `light`; no se mira
-`prefers-color-scheme`. El contenedor raíz de `App.jsx` no lleva clase de tema.
+la clase en `<html>` y persiste el cambio. El contenedor raíz de `App.jsx` no
+lleva clase de tema.
+
+El default es **oscuro**, a diferencia de la referencia, que arranca en claro:
+el sitio se ve mejor así y es la primera impresión que queremos dar. El claro
+solo aparece si el visitante lo eligió antes, o sea si hay un `light` guardado.
+La comparación va contra `'light'` y no contra `'dark'` justamente por eso, y
+está escrita igual en los dos lugares que la leen. No se mira
+`prefers-color-scheme`.
 
 **Sombras.** En `index.css` los tokens de sombra valen `var(--shadow)` y
 `var(--shadow-sm)`, y los valores reales viven en `:root` y en `.dark`.
